@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSync - Nhà bếp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-house-signal"></i>
+                <span>HomeSync</span>
+            </div>
+            <nav class="menu">
+                <a href="index.html" class="menu-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span>Tổng quan</span>
+                </a>
+                <a href="living_room.html" class="menu-item">
+                    <i class="fa-solid fa-couch"></i>
+                    <span>Phòng khách</span>
+                </a>
+                <a href="bedroom.html" class="menu-item">
+                    <i class="fa-solid fa-bed"></i>
+                    <span>Phòng ngủ</span>
+                </a>
+                <a href="kitchen.html" class="menu-item active">
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <span>Nhà bếp</span>
+                </a>
+                <a href="garden.html" class="menu-item">
+                    <i class="fa-solid fa-tree"></i>
+                    <span>Sân vườn</span>
+                </a>
+                <a href="devices.html" class="menu-item">
+                    <i class="fa-solid fa-list"></i>
+                    <span>Thiết bị</span>
+                </a>
+                <a href="settings.html" class="menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Cài đặt</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Tìm kiếm thiết bị, phòng...">
+                </div>
+                <div class="header-actions">
+                    <div class="notification-bell">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=6366f1&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Mục 1: Header & Môi trường -->
+                <div class="page-header-flex">
+                    <h1 class="page-title">Quản lý Nhà bếp</h1>
+                </div>
+
+                <section class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon temperature"><i class="fa-solid fa-temperature-half"></i></div>
+                        <div class="stat-info">
+                            <h3>Nhiệt độ</h3>
+                            <p>27°C</p>
+                        </div>
+                    </div>
+                    <div class="stat-card" id="gas-stat-card" style="position: relative;">
+                        <button class="test-alert-btn" onclick="triggerGasAlert()">Test sự cố</button>
+                        <div class="stat-icon" style="background: rgba(239, 68, 68, 0.15); color: var(--color-red);"><i
+                                class="fa-solid fa-fire"></i></div>
+                        <div class="stat-info">
+                            <h3>Khói/Gas</h3>
+                            <p id="gas-status-text">Bình thường</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mục 4: Cảnh báo rò rỉ Gas (Sẽ được chèn vào bên trong Grid) -->
+
+                <div class="room-grid kitchen-room-grid mt-4">
+                    <!-- Thẻ cảnh báo rò rỉ Gas -->
+                    <section class="control-card gas-alert-card" id="gas-alert"
+                        style="display: none; grid-column: 1 / -1; width: 100%;">
+                        <div class="card-header" style="justify-content: center; text-align: center; color: white;">
+                            <i class="fa-solid fa-triangle-exclamation icon-lg" style="color: white;"></i>
+                            <h3 style="margin-left: 1rem; color: white; font-size: 1.2rem;">Cảnh báo: Rò rỉ khí Gas!
+                            </h3>
+                        </div>
+                        <button class="btn-primary w-100 mt-4"
+                            style="background: rgba(255,255,255,0.2); border: 1px solid white;"
+                            onclick="dismissGasAlertWithToast()">Tắt còi báo động</button>
+                    </section>
+                    <!-- Mục 2: Máy hút mùi -->
+                    <section class="control-card">
+                        <div class="card-header">
+                            <div class="header-title">
+                                <i class="fa-solid fa-fan icon-lg"></i>
+                                <h3>Máy hút mùi</h3>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="segmented-control">
+                                <button class="segmented-btn active" data-mode="off"
+                                    onclick="setHoodMode(this, 'off')">Tắt</button>
+                                <button class="segmented-btn" data-mode="low" onclick="setHoodMode(this, 'low')">Hút
+                                    nhẹ</button>
+                                <button class="segmented-btn" data-mode="high" onclick="setHoodMode(this, 'high')">Hút
+                                    mạnh</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Mục 3: Tủ lạnh thông minh -->
+                    <section class="control-card">
+                        <div class="card-header">
+                            <div class="header-title">
+                                <i class="fa-solid fa-box icon-lg"></i>
+                                <h3>Tủ lạnh thông minh</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" data-device-id="fridge-kitchen" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="sliders-container mt-4">
+                            <div class="slider-group">
+                                <label>Ngăn mát <span class="val" id="cooler-val">4°C</span></label>
+                                <input type="range" id="cooler-slider" class="custom-slider" min="1" max="7" value="4">
+                            </div>
+                            <div class="slider-group mt-3">
+                                <label>Ngăn đá <span class="val" id="freezer-val">-18°C</span></label>
+                                <input type="range" id="freezer-slider" class="custom-slider" min="-22" max="-14"
+                                    value="-18">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script JS cơ bản cho trang Nhà bếp -->
+    <script>
+        function setHoodMode(btn, mode) {
+            const btns = btn.parentElement.querySelectorAll('.segmented-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            localStorage.setItem('kitchenHood', mode);
+            if (typeof window.showToast === 'function') {
+                window.showToast('Thành công', 'Đã thay đổi chế độ máy hút mùi!');
+            }
+        }
+
+        function triggerGasAlert() {
+            // Hiển thị viền đỏ và text
+            const gasCard = document.getElementById('gas-stat-card');
+            const gasStatusElement = document.getElementById('gas-status-text');
+            if (gasCard) gasCard.classList.add('alert-danger');
+            if (gasStatusElement) {
+                gasStatusElement.innerText = 'PHÁT HIỆN RÒ RỈ!';
+                gasStatusElement.style.color = 'var(--color-red)';
+            }
+
+            // Hiển thị banner
+            document.getElementById('gas-alert').style.display = 'block';
+            localStorage.setItem('gasAlertState', 'danger');
+        }
+
+        function dismissGasAlert() {
+            // Ẩn banner
+            const alertBox = document.getElementById('gas-alert');
+            if (alertBox) alertBox.style.display = 'none';
+
+            // Khôi phục giao diện ô thông số
+            const gasCard = document.getElementById('gas-stat-card');
+            const gasStatusElement = document.getElementById('gas-status-text');
+            if (gasCard) gasCard.classList.remove('alert-danger');
+            if (gasStatusElement) {
+                gasStatusElement.innerText = 'Bình thường';
+                gasStatusElement.style.color = 'white';
+            }
+
+            localStorage.setItem('gasAlertState', 'safe');
+            // Cố tình không hiển thị toast nếu là đang khởi tạo (được quản lý tự động từ event handler)
+        }
+
+        function dismissGasAlertWithToast() {
+            dismissGasAlert();
+            if (typeof window.showToast === 'function') {
+                window.showToast('Thành công', 'Đã xử lý sự cố an toàn!');
+            }
+        }
+
+        function initKitchen() {
+            // Restore cảnh báo Gas
+            const gasAlertState = localStorage.getItem('gasAlertState');
+            if (gasAlertState === 'danger') {
+                triggerGasAlert();
+            } else {
+                dismissGasAlert();
+            }
+
+            // Restore chế độ hút mùi (Segmented control)
+            const savedMode = localStorage.getItem('kitchenHood') || 'off';
+            const hoodBtns = document.querySelectorAll('.segmented-btn');
+            hoodBtns.forEach(b => {
+                if (b.getAttribute('data-mode') === savedMode) {
+                    b.classList.add('active');
+                } else {
+                    b.classList.remove('active');
+                }
+            });
+
+            // Restore sliders Tủ lạnh
+            const cooler = document.getElementById('cooler-slider');
+            const freezer = document.getElementById('freezer-slider');
+
+            const savedCooler = localStorage.getItem('coolerTemp') || 4;
+            const savedFreezer = localStorage.getItem('freezerTemp') || -18;
+
+            if (cooler && freezer) {
+                cooler.value = savedCooler;
+                document.getElementById('cooler-val').innerText = savedCooler + '°C';
+                freezer.value = savedFreezer;
+                document.getElementById('freezer-val').innerText = savedFreezer + '°C';
+
+                cooler.addEventListener('input', e => document.getElementById('cooler-val').innerText = e.target.value + '°C');
+                cooler.addEventListener('change', e => {
+                    localStorage.setItem('coolerTemp', e.target.value);
+                    if (typeof window.showToast === 'function') window.showToast('Thành công', 'Đã chỉnh nhiệt độ ngăn mát');
+                });
+
+                freezer.addEventListener('input', e => document.getElementById('freezer-val').innerText = e.target.value + '°C');
+                freezer.addEventListener('change', e => {
+                    localStorage.setItem('freezerTemp', e.target.value);
+                    if (typeof window.showToast === 'function') window.showToast('Thành công', 'Đã chỉnh nhiệt độ ngăn đá');
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initKitchen();
+        });
+    </script>
+    <script src="globalState.js"></script>
+</body>
+
+</html>

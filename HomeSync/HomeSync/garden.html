@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSync - Sân vườn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-house-signal"></i>
+                <span>HomeSync</span>
+            </div>
+            <nav class="menu">
+                <a href="index.html" class="menu-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span>Tổng quan</span>
+                </a>
+                <a href="living_room.html" class="menu-item">
+                    <i class="fa-solid fa-couch"></i>
+                    <span>Phòng khách</span>
+                </a>
+                <a href="bedroom.html" class="menu-item">
+                    <i class="fa-solid fa-bed"></i>
+                    <span>Phòng ngủ</span>
+                </a>
+                <a href="kitchen.html" class="menu-item">
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <span>Nhà bếp</span>
+                </a>
+                <a href="garden.html" class="menu-item active">
+                    <i class="fa-solid fa-tree"></i>
+                    <span>Sân vườn</span>
+                </a>
+                <a href="devices.html" class="menu-item">
+                    <i class="fa-solid fa-list"></i>
+                    <span>Thiết bị</span>
+                </a>
+                <a href="settings.html" class="menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Cài đặt</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Tìm kiếm thiết bị, phòng...">
+                </div>
+                <div class="header-actions">
+                    <div class="notification-bell">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=6366f1&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <!-- Mục 1: Header & Môi trường -->
+                <div class="page-header-flex">
+                    <h1 class="page-title">Quản lý Sân vườn</h1>
+                </div>
+
+                <section class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: rgba(139, 90, 43, 0.15); color: #8b5a2b;"><i
+                                class="fa-solid fa-seedling"></i></div>
+                        <div class="stat-info">
+                            <h3>Độ ẩm đất</h3>
+                            <p>40%</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon temperature"><i class="fa-solid fa-cloud-sun"></i></div>
+                        <div class="stat-info">
+                            <h3>Nhiệt độ ngoài trời</h3>
+                            <p>32°C</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="room-grid mt-4">
+                    <!-- Mục 2: Đèn sân vườn (Hẹn giờ) -->
+                    <section class="control-card timer-card">
+                        <div class="card-header mb-3">
+                            <div class="header-title">
+                                <i class="fa-solid fa-lightbulb icon-lg"></i>
+                                <h3>Đèn sân vườn</h3>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">Hẹn giờ bật đèn tự động:</p>
+                        </div>
+                        <form class="timer-form" onsubmit="event.preventDefault(); saveGardenTimer();">
+                            <div class="time-inputs">
+                                <input type="number" id="garden-timer-hour" min="0" max="23" placeholder="Giờ"
+                                    value="18">
+                                <span>:</span>
+                                <input type="number" id="garden-timer-minute" min="0" max="59" placeholder="Phút"
+                                    value="00">
+                            </div>
+                            <button type="submit" class="btn-primary w-100 mt-3">Lưu cài đặt</button>
+                        </form>
+                    </section>
+
+                    <!-- Mục 3: Hệ thống Tưới cây -->
+                    <section class="control-card">
+                        <div class="card-header">
+                            <div class="header-title">
+                                <i class="fa-solid fa-shower icon-lg"></i>
+                                <h3>Hệ thống Tưới cây</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="sprinkler-toggle" data-device-id="sprinkler-garden">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="mt-4">
+                            <label style="display: flex; justify-content: space-between;">
+                                <span>Tiến trình tưới nước</span>
+                                <span class="val" id="sprinkler-val">Tạm dừng</span>
+                            </label>
+                            <div class="progress-bar mt-2">
+                                <div class="progress-fill" id="sprinkler-progress"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Mục 4: Camera an ninh -->
+                    <section class="control-card" style="grid-column: 1 / -1;">
+                        <div class="card-header mb-3">
+                            <div class="header-title">
+                                <i class="fa-solid fa-video icon-lg"></i>
+                                <h3>Camera an ninh</h3>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" data-device-id="cam-garden" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="camera-feed"
+                            style="position: relative; border-radius: 12px; overflow: hidden; background: #000; height: 300px; display: flex; align-items: center; justify-content: center;">
+                            <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800"
+                                alt="Garden Camera View"
+                                style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+                            <div
+                                style="position: absolute; top: 10px; right: 10px; background: rgba(239,68,68,0.8); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 8px; height: 8px; background: white; border-radius: 50%;"
+                                    class="blink-alert"></div>
+                                LIVE
+                            </div>
+                        </div>
+                        <div class="mt-3"
+                            style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 8px;">
+                            <span style="font-weight: 500;">Cảnh báo chuyển động</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="motion-alert-toggle" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Script JS cơ bản cho trang Sân vườn -->
+    <script>
+        function saveGardenTimer() {
+            const h = document.getElementById('garden-timer-hour').value;
+            const m = document.getElementById('garden-timer-minute').value;
+
+            // Validate
+            if (h < 0 || h > 23 || m < 0 || m > 59 || h === '' || m === '') {
+                if (typeof window.showToast === 'function') window.showToast('Lỗi', 'Thời gian không hợp lệ!', 'error');
+                return;
+            }
+
+            const timeObj = { hour: h.padStart(2, '0'), minute: m.padStart(2, '0') };
+            localStorage.setItem('gardenTimer', JSON.stringify(timeObj));
+
+            if (typeof window.showToast === 'function') {
+                window.showToast('Thành công', `Đã hẹn giờ bật đèn lúc ${timeObj.hour}:${timeObj.minute}`);
+            }
+        }
+
+        function loadAllStates() {
+            // Restore timer
+            const savedTimer = JSON.parse(localStorage.getItem('gardenTimer'));
+            if (savedTimer) {
+                document.getElementById('garden-timer-hour').value = savedTimer.hour;
+                document.getElementById('garden-timer-minute').value = savedTimer.minute;
+            }
+
+            // Restore Motion Alert
+            const motionToggle = document.getElementById('motion-alert-toggle');
+            if (motionToggle) {
+                const savedMotion = localStorage.getItem('gardenMotionAlert');
+                if (savedMotion !== null) {
+                    motionToggle.checked = (savedMotion === 'true');
+                }
+                motionToggle.addEventListener('change', (e) => {
+                    localStorage.setItem('gardenMotionAlert', e.target.checked);
+                    if (typeof window.showToast === 'function') {
+                        window.showToast('Thành công', e.target.checked ? 'Đã BẬT cảnh báo chuyển động' : 'Đã TẮT cảnh báo chuyển động');
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAllStates();
+
+            // Lắng nghe trạng thái tưới cây từ globalState
+            const sprinklerToggle = document.getElementById('sprinkler-toggle');
+            const progressBar = document.getElementById('sprinkler-progress');
+            const progressVal = document.getElementById('sprinkler-val');
+
+            function updateSprinklerUI() {
+                if (sprinklerToggle.checked) {
+                    progressBar.style.animation = 'water-flow 2s infinite linear';
+                    progressBar.style.width = '100%';
+                    progressVal.innerText = 'Đang tưới...';
+                    progressVal.style.color = 'var(--color-blue)';
+                } else {
+                    progressBar.style.animation = 'none';
+                    progressBar.style.width = '0%';
+                    progressVal.innerText = 'Tạm dừng';
+                    progressVal.style.color = 'var(--text-secondary)';
+                }
+            }
+
+            // Khởi tạo trạng thái ban đầu (globalState.js sẽ check input này, sau đó chúng ta update UI)
+            setTimeout(updateSprinklerUI, 50);
+
+            sprinklerToggle.addEventListener('change', () => {
+                updateSprinklerUI();
+            });
+        });
+    </script>
+    <script src="globalState.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSync - Quản lý Thiết bị</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .btn-toggle-on {
+            background: rgba(16, 185, 129, 0.15) !important;
+            color: var(--color-green) !important;
+            border: 1px solid rgba(16, 185, 129, 0.5) !important;
+        }
+        .btn-toggle-on:hover {
+            background: var(--color-green) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4) !important;
+        }
+        .modal-icon.icon-on {
+            background: rgba(16, 185, 129, 0.1) !important;
+            color: var(--color-green) !important;
+        }
+        .btn-confirm-on {
+            background: rgba(16, 185, 129, 0.15) !important;
+            color: var(--color-green) !important;
+            border: 1px solid rgba(16, 185, 129, 0.5) !important;
+        }
+        .btn-confirm-on:hover {
+            background: var(--color-green) !important;
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Mục 1: Sidebar (Kế thừa từ index) -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-house-signal"></i>
+                <span>HomeSync</span>
+            </div>
+            <nav class="menu">
+                <a href="index.html" class="menu-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span>Tổng quan</span>
+                </a>
+                <a href="living_room.html" class="menu-item">
+                    <i class="fa-solid fa-couch"></i>
+                    <span>Phòng khách</span>
+                </a>
+                <a href="bedroom.html" class="menu-item">
+                    <i class="fa-solid fa-bed"></i>
+                    <span>Phòng ngủ</span>
+                </a>
+                <a href="kitchen.html" class="menu-item">
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <span>Nhà bếp</span>
+                </a>
+                <a href="garden.html" class="menu-item">
+                    <i class="fa-solid fa-tree"></i>
+                    <span>Sân vườn</span>
+                </a>
+                <a href="devices.html" class="menu-item active">
+                    <i class="fa-solid fa-list"></i>
+                    <span>Thiết bị</span>
+                </a>
+                <a href="settings.html" class="menu-item">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Cài đặt</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Mục 1: Top Header (Kế thừa từ index) -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Tìm kiếm thiết bị...">
+                </div>
+                <div class="header-actions">
+                    <div class="notification-bell">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=6366f1&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <div class="page-header-flex">
+                    <h1 class="page-title">Quản lý Thiết bị</h1>
+                    <!-- Nút Bật/Tắt tất cả thiết bị -->
+                    <button class="btn-danger" id="btnToggleAll">
+                        <i class="fa-solid fa-power-off"></i> <span>Tắt tất cả</span>
+                    </button>
+                </div>
+
+                <!-- Mục 2: Filter Bar -->
+                <section class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">Tất cả</button>
+                    <button class="filter-btn" data-filter="on">Đang bật <span class="count-badge bg-green"
+                            id="count-on">0</span></button>
+                    <button class="filter-btn" data-filter="off">Đang tắt <span class="count-badge bg-gray"
+                            id="count-off">0</span></button>
+                    <button class="filter-btn" data-filter="error">Báo lỗi <span class="count-badge bg-red"
+                            id="count-error">0</span></button>
+                </section>
+
+                <!-- Mục 3: Device Table -->
+                <section class="device-table-container">
+                    <table class="device-table">
+                        <thead>
+                            <tr>
+                                <th>Thiết bị</th>
+                                <th>Vị trí</th>
+                                <th>Trạng thái</th>
+                                <th>Thời gian HĐ</th>
+                                <th>Hành động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="device-table-body">
+                            <!-- JS sẽ render nội dung vào đây -->
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Hộp thoại cảnh báo thao tác hàng loạt (Modal) -->
+    <div class="modal-overlay" id="toggleAllModal">
+        <div class="modal-box">
+            <div class="modal-icon" id="modalToggleIconBox">
+                <i class="fa-solid fa-power-off"></i>
+            </div>
+            <h2>Xác nhận thao tác hàng loạt</h2>
+            <p>Bạn có chắc chắn muốn <strong id="modalToggleTextAction">tắt</strong> toàn bộ thiết bị trong nhà không?</p>
+            <div class="modal-actions">
+                <button class="btn-outline" onclick="closeToggleAllModal()">Hủy bỏ</button>
+                <button class="btn-danger" id="btnConfirmToggleAll">Đồng ý, thực hiện</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Bộ lọc (Filter) ---
+        let currentFilter = 'all';
+
+        function initFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Cập nhật class active
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+
+                    // Lấy bộ lọc và render lại
+                    currentFilter = e.currentTarget.getAttribute('data-filter');
+                    renderDeviceTable();
+                });
+            });
+        }
+
+        // --- Render động bảng thiết bị ---
+        function renderDeviceTable() {
+            const tbody = document.getElementById('device-table-body');
+            let devices = getAllDevices();
+
+            // 1. Dọn dẹp mảng: Chỉ giữ lại các thiết bị hợp lệ (có name, location)
+            const initialLength = devices.length;
+            devices = devices.filter(d => d && d.name && d.location);
+            if (devices.length !== initialLength) {
+                // Tự động lưu lại mảng đã làm sạch vào localStorage
+                localStorage.setItem('homeSyncDevices', JSON.stringify(devices));
+            }
+
+            // 2. Sắp xếp danh sách theo vị trí (alphabet)
+            devices.sort((a, b) => a.location.localeCompare(b.location));
+
+            // 3. Cập nhật số lượng trên các huy hiệu (badges)
+            const countOn = devices.filter(d => d.status === 'on').length;
+            const countOff = devices.filter(d => d.status === 'off').length;
+            const countError = devices.filter(d => d.status === 'error').length;
+
+            document.getElementById('count-on').innerText = countOn;
+            document.getElementById('count-off').innerText = countOff;
+            document.getElementById('count-error').innerText = countError;
+
+            // 4. Lọc danh sách thiết bị theo bộ lọc hiện tại
+            let filteredDevices = devices;
+            if (currentFilter !== 'all') {
+                filteredDevices = devices.filter(d => d.status === currentFilter);
+            }
+
+            // 5. Xóa nội dung cũ và render nội dung mới
+            tbody.innerHTML = '';
+
+            if (filteredDevices.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-secondary);">Không có thiết bị nào phù hợp</td></tr>';
+                return;
+            }
+
+            filteredDevices.forEach(device => {
+                // Xử lý html trạng thái
+                let statusHtml = '';
+                if (device.status === 'on') {
+                    // Nếu là rèm cửa thì hiện "Đang mở" thay vì Đang bật cho hợp logic
+                    const label = (device.name === 'Rèm cửa') ? 'Đang mở' : 'Đang bật';
+                    statusHtml = `<span class="status-badge on">${label}</span>`;
+                } else {
+                    const label = (device.name === 'Rèm cửa') ? 'Đã đóng' : 'Đang tắt';
+                    statusHtml = `<span class="status-badge off">${label}</span>`;
+                }
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>
+                        <div class="table-device-info">
+                            <div class="icon-box"><i class="${device.icon}"></i></div>
+                            <span>${device.name}</span>
+                        </div>
+                    </td>
+                    <td>${device.location}</td>
+                    <td>${statusHtml}</td>
+                    <td>${device.uptime}</td>
+                    <td><button class="btn-icon" title="Cấu hình" onclick="window.showToast('Thành công', 'Đang mở màn hình cấu hình...')"><i class="fa-solid fa-sliders"></i></button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // --- Logic Cập nhật nút Bật/Tắt tất cả ---
+            const btnToggleAll = document.getElementById('btnToggleAll');
+            if (btnToggleAll) {
+                if (countOn > 0) {
+                    // Nếu có thiết bị đang bật -> Hiện nút Tắt tất cả (màu đỏ)
+                    btnToggleAll.className = 'btn-danger';
+                    btnToggleAll.innerHTML = '<i class="fa-solid fa-power-off"></i> <span>Tắt tất cả</span>';
+                    btnToggleAll.dataset.action = 'off';
+                } else {
+                    // Nếu không có thiết bị nào bật -> Hiện nút Bật tất cả (màu xanh lá)
+                    btnToggleAll.className = 'btn-danger btn-toggle-on';
+                    btnToggleAll.innerHTML = '<i class="fa-solid fa-power-off"></i> <span>Bật tất cả</span>';
+                    btnToggleAll.dataset.action = 'on';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initFilters();
+            renderDeviceTable();
+
+            // Lắng nghe thay đổi trạng thái từ script khác (trong cùng tab)
+            window.addEventListener('deviceUpdated', renderDeviceTable);
+
+            // Lắng nghe thay đổi từ tab khác
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'homeSyncDevices') renderDeviceTable();
+            });
+
+            // Logic Bật/Tắt tất cả thiết bị
+            const btnToggleAll = document.getElementById('btnToggleAll');
+            if (btnToggleAll) {
+                btnToggleAll.addEventListener('click', () => {
+                    openToggleAllModal();
+                });
+            }
+
+            const btnConfirmToggleAll = document.getElementById('btnConfirmToggleAll');
+            if (btnConfirmToggleAll) {
+                btnConfirmToggleAll.addEventListener('click', () => {
+                    const action = btnToggleAll.dataset.action; // 'on' hoặc 'off'
+                    let devices = getAllDevices();
+                    let hasChanges = false;
+                    
+                    devices.forEach(d => {
+                        // Nếu là rèm cửa, ta vẫn giữ nguyên logic action (on = mở, off = đóng)
+                        if (action === 'off' && d.status === 'on') {
+                            d.status = 'off';
+                            hasChanges = true;
+                        } else if (action === 'on' && d.status === 'off') {
+                            d.status = 'on';
+                            hasChanges = true;
+                        }
+                    });
+                    
+                    if (hasChanges) {
+                        localStorage.setItem('homeSyncDevices', JSON.stringify(devices));
+                        renderDeviceTable();
+                        window.dispatchEvent(new CustomEvent('deviceUpdated'));
+                        
+                        const textAction = action === 'on' ? 'bật' : 'tắt';
+                        if (typeof window.showToast === 'function') {
+                            window.showToast('Thành công', `Đã ${textAction} toàn bộ thiết bị!`, 'success');
+                        }
+                    } else {
+                        if (typeof window.showToast === 'function') {
+                            window.showToast('Thông báo', 'Không có thiết bị nào thay đổi trạng thái.', 'info');
+                        }
+                    }
+                    closeToggleAllModal();
+                });
+            }
+        });
+
+        // Hàm mở/đóng Modal
+        function openToggleAllModal() {
+            const modal = document.getElementById('toggleAllModal');
+            const iconBox = document.getElementById('modalToggleIconBox');
+            const textAction = document.getElementById('modalToggleTextAction');
+            const confirmBtn = document.getElementById('btnConfirmToggleAll');
+            const action = document.getElementById('btnToggleAll').dataset.action;
+
+            if (action === 'on') {
+                textAction.innerText = 'bật';
+                iconBox.classList.add('icon-on');
+                confirmBtn.className = 'btn-danger btn-confirm-on';
+            } else {
+                textAction.innerText = 'tắt';
+                iconBox.classList.remove('icon-on');
+                confirmBtn.className = 'btn-danger';
+            }
+            
+            modal.classList.add('show');
+        }
+
+        function closeToggleAllModal() {
+            const modal = document.getElementById('toggleAllModal');
+            modal.classList.remove('show');
+        }
+    </script>
+    <script src="globalState.js"></script>
+</body>
+
+</html>
