@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeSync - Cài đặt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-house-signal"></i>
+                <span>HomeSync</span>
+            </div>
+            <nav class="menu">
+                <a href="index.html" class="menu-item">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span>Tổng quan</span>
+                </a>
+                <a href="living_room.html" class="menu-item">
+                    <i class="fa-solid fa-couch"></i>
+                    <span>Phòng khách</span>
+                </a>
+                <a href="bedroom.html" class="menu-item">
+                    <i class="fa-solid fa-bed"></i>
+                    <span>Phòng ngủ</span>
+                </a>
+                <a href="kitchen.html" class="menu-item">
+                    <i class="fa-solid fa-fire-burner"></i>
+                    <span>Nhà bếp</span>
+                </a>
+                <a href="garden.html" class="menu-item">
+                    <i class="fa-solid fa-tree"></i>
+                    <span>Sân vườn</span>
+                </a>
+                <a href="devices.html" class="menu-item">
+                    <i class="fa-solid fa-list"></i>
+                    <span>Thiết bị</span>
+                </a>
+                <a href="settings.html" class="menu-item active">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Cài đặt</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Tìm kiếm cài đặt...">
+                </div>
+                <div class="header-actions">
+                    <div class="notification-bell">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=6366f1&color=fff" alt="User">
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-wrapper">
+                <div class="page-header-flex">
+                    <h1 class="page-title">Cài đặt hệ thống</h1>
+                </div>
+
+                <div class="settings-grid">
+                    <!-- Mục 1: Hồ sơ cá nhân -->
+                    <section class="control-card settings-card">
+                        <div class="card-header mb-3">
+                            <div class="header-title">
+                                <i class="fa-solid fa-user icon-lg"></i>
+                                <h3>Cài đặt Tài khoản</h3>
+                            </div>
+                        </div>
+                        <div class="profile-section">
+                            <div class="avatar-upload">
+                                <img src="https://ui-avatars.com/api/?name=Admin&background=6366f1&color=fff&size=100"
+                                    alt="Avatar">
+                                <button class="btn-icon-small"><i class="fa-solid fa-camera"></i></button>
+                            </div>
+                            <form class="settings-form" onsubmit="event.preventDefault(); saveProfileSettings();">
+                                <div class="form-group">
+                                    <label>Tên hiển thị</label>
+                                    <input type="text" id="setting-display-name" class="custom-input"
+                                        placeholder="Nhập tên hiển thị">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" id="setting-email" class="custom-input"
+                                        placeholder="Nhập email">
+                                </div>
+                                <button type="submit" class="btn-primary w-100 mt-2">Lưu thay đổi</button>
+                            </form>
+                        </div>
+                    </section>
+
+                    <!-- Mục 2: Cấu hình mạng -->
+                    <section class="control-card settings-card">
+                        <div class="card-header mb-3">
+                            <div class="header-title">
+                                <i class="fa-solid fa-network-wired icon-lg"></i>
+                                <h3>Cấu hình Router trung tâm</h3>
+                            </div>
+                        </div>
+                        <form class="settings-form" onsubmit="event.preventDefault(); saveNetworkSettings();">
+                            <div class="form-group">
+                                <label>Địa chỉ IP tĩnh</label>
+                                <input type="text" id="setting-ip" class="custom-input"
+                                    placeholder="Ví dụ: 192.168.1.x">
+                            </div>
+                            <div class="form-group">
+                                <label>Subnet Mask</label>
+                                <input type="text" id="setting-subnet" class="custom-input"
+                                    placeholder="Ví dụ: 255.255.255.0">
+                            </div>
+                            <div class="form-group">
+                                <label>Gateway mặc định</label>
+                                <input type="text" id="setting-gateway" class="custom-input"
+                                    placeholder="Ví dụ: 192.168.1.1">
+                            </div>
+                            <button type="submit" class="btn-primary w-100 mt-2">Áp dụng cấu hình mạng</button>
+                        </form>
+                    </section>
+
+                    <!-- Mục 3: Thông báo & Cảnh báo -->
+                    <section class="control-card settings-card">
+                        <div class="card-header mb-3">
+                            <div class="header-title">
+                                <i class="fa-solid fa-bell icon-lg"></i>
+                                <h3>Thông báo & Cảnh báo</h3>
+                            </div>
+                        </div>
+                        <div class="notification-settings">
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Mất kết nối mạng</h4>
+                                    <p>Nhận thông báo khi thiết bị trung tâm offline</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="notify-disconnect" class="setting-toggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Cảnh báo nhiệt độ</h4>
+                                    <p>Gửi cảnh báo khi nhiệt độ phòng server cao</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="notify-temp" class="setting-toggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-row">
+                                <div class="setting-info">
+                                    <h4>Báo cáo năng lượng</h4>
+                                    <p>Gửi báo cáo tiêu thụ điện năng hàng tuần</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="notify-energy" class="setting-toggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Mục 4: Quản lý dữ liệu (Danger Zone) -->
+                    <section class="control-card settings-card danger-zone">
+                        <div class="card-header mb-3">
+                            <div class="header-title">
+                                <i class="fa-solid fa-triangle-exclamation icon-lg text-red"></i>
+                                <h3 class="text-red">Khu vực nguy hiểm (Danger Zone)</h3>
+                            </div>
+                        </div>
+                        <div class="danger-content">
+                            <p>Các hành động dưới đây không thể hoàn tác. Vui lòng cân nhắc kỹ trước khi thực hiện.</p>
+                            <button type="button" class="btn-danger mt-3" onclick="openResetModal()">
+                                <i class="fa-solid fa-rotate-left"></i> Khôi phục cài đặt gốc (Reset Factory)
+                            </button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+    <!-- Hộp thoại cảnh báo (Modal) -->
+    <div class="modal-overlay" id="resetModal">
+        <div class="modal-box">
+            <div class="modal-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h2>Xác nhận khôi phục</h2>
+            <p>Bạn có chắc chắn muốn khôi phục toàn bộ hệ thống về cài đặt gốc? <strong>Tất cả dữ liệu và cấu hình sẽ bị
+                    xóa vĩnh viễn.</strong></p>
+            <div class="modal-actions">
+                <button class="btn-outline" onclick="closeResetModal()">Hủy bỏ</button>
+                <button class="btn-danger" onclick="confirmReset()">Đồng ý, Khôi phục</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+
+        // --- 2. Xử lý lưu trữ Settings bằng localStorage ---
+
+        const defaultSettings = {
+            profile: { displayName: "Admin", email: "admin@homesync.local" },
+            network: { ip: "192.168.1.100", subnet: "255.255.255.0", gateway: "192.168.1.1" },
+            notifications: { disconnect: true, temp: true, energy: false }
+        };
+
+        function getSettingsData() {
+            return JSON.parse(localStorage.getItem('homeSyncSettings')) || defaultSettings;
+        }
+
+        function saveSettingsData(data) {
+            localStorage.setItem('homeSyncSettings', JSON.stringify(data));
+        }
+
+        function saveProfileSettings() {
+            const data = getSettingsData();
+            const nameInput = document.getElementById("setting-display-name").value.trim();
+
+            if (!nameInput) {
+                window.showToast('Lỗi', 'Tên hiển thị không được để trống!', 'error');
+                return;
+            }
+
+            data.profile.displayName = nameInput;
+            data.profile.email = document.getElementById("setting-email").value;
+            saveSettingsData(data);
+            window.showToast('Thành công', 'Đã cập nhật thông tin tài khoản!', 'success');
+        }
+
+        function saveNetworkSettings() {
+            const data = getSettingsData();
+            const ipInput = document.getElementById("setting-ip").value.trim();
+
+            if (!ipInput) {
+                window.showToast('Lỗi', 'Địa chỉ IP không được để trống!', 'error');
+                return;
+            }
+
+            data.network.ip = ipInput;
+            data.network.subnet = document.getElementById("setting-subnet").value;
+            data.network.gateway = document.getElementById("setting-gateway").value;
+            saveSettingsData(data);
+            window.showToast('Thành công', 'Đã áp dụng cấu hình mạng mới!', 'success');
+        }
+
+        function loadAllStates() {
+            const data = getSettingsData();
+
+            document.getElementById("setting-display-name").value = data.profile.displayName;
+            document.getElementById("setting-email").value = data.profile.email;
+
+            document.getElementById("setting-ip").value = data.network.ip;
+            document.getElementById("setting-subnet").value = data.network.subnet;
+            document.getElementById("setting-gateway").value = data.network.gateway;
+
+            document.getElementById("notify-disconnect").checked = data.notifications.disconnect;
+            document.getElementById("notify-temp").checked = data.notifications.temp;
+            document.getElementById("notify-energy").checked = data.notifications.energy;
+
+            const toggles = document.querySelectorAll('.setting-toggle');
+            toggles.forEach(toggle => {
+                // Xóa listener cũ nếu có để tránh duplicate khi reset
+                const newToggle = toggle.cloneNode(true);
+                toggle.parentNode.replaceChild(newToggle, toggle);
+
+                newToggle.addEventListener('change', (e) => {
+                    const currentData = getSettingsData();
+                    if (e.target.id === 'notify-disconnect') currentData.notifications.disconnect = e.target.checked;
+                    if (e.target.id === 'notify-temp') currentData.notifications.temp = e.target.checked;
+                    if (e.target.id === 'notify-energy') currentData.notifications.energy = e.target.checked;
+                    saveSettingsData(currentData);
+                    if (typeof window.showToast === 'function') {
+                        window.showToast('Thành công', 'Đã cập nhật cài đặt thông báo!');
+                    }
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAllStates();
+        });
+
+        // --- 3. Xử lý Modal Factory Reset ---
+        const resetModal = document.getElementById('resetModal');
+
+        function openResetModal() {
+            resetModal.classList.add('show');
+        }
+
+        function closeResetModal() {
+            resetModal.classList.remove('show');
+        }
+
+        function confirmReset() {
+            closeResetModal();
+            localStorage.removeItem('homeSyncSettings'); // Xóa settings
+            localStorage.removeItem('homeSyncDevices'); // Xóa trạng thái thiết bị
+
+            setTimeout(() => {
+                window.showToast("Thành công", "Hệ thống đã được khôi phục về cài đặt gốc!", "success");
+                loadAllStates();
+                // Yêu cầu load lại các nút ở globalState (nếu cần thiết) nhưng hiện tại đang ở settings page.
+            }, 300);
+        }
+    </script>
+    <script src="globalState.js"></script>
+</body>
+
+</html>
