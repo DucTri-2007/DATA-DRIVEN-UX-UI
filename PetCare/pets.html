@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thú cưng - PetCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <div class="app-content">
+        <div style="padding: 70px 20px 100px; text-align: center;">
+            <h2 class="section-title" style="margin-bottom: 20px; text-align: center;">Thư viện Thú cưng</h2>
+            <div id="pets-render-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;"></div>
+            <button id="btnOpenAddPet" class="btn-primary" style="background-color: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); width: 100%; border-radius: 25px;">+ Thêm thú cưng</button>
+        </div>
+        </div>
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Trang chủ</span></a>
+            <a href="appointments.html" class="nav-item"><i class="fa-solid fa-calendar-days"></i><span>Lịch hẹn</span></a>
+            <a href="pets.html" class="nav-item active"><i class="fa-solid fa-paw"></i><span>Thú cưng</span></a>
+            <a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Tài khoản</span></a>
+        </nav>
+    </div>
+
+    <!-- Modal Thêm Thú Cưng -->
+    <div id="addPetModal" class="modal-overlay">
+        <div class="modal-content" style="text-align: left; max-width: 90%; padding: 30px 20px;">
+            <h2 class="section-title" style="margin-bottom: 15px; text-align: center; font-size: 1.5rem;">Thêm thú cưng mới</h2>
+            <form id="addPetForm" class="booking-form">
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px;">Tên thú cưng</label>
+                    <input type="text" id="petName" class="form-control" placeholder="Ví dụ: Milu" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 12px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 5px;">Giống loài</label>
+                    <input type="text" id="petBreed" class="form-control" placeholder="Ví dụ: Corgi, Mèo Anh..." required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom: 12px; width: 100%;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Cân nặng (kg)</label>
+                        <input type="number" id="petWeight" class="form-control" placeholder="Ví dụ: 4" required step="0.1">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 12px; width: 100%;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Tuổi (năm)</label>
+                        <input type="number" id="petAge" class="form-control" placeholder="Ví dụ: 2" required step="0.1">
+                    </div>
+                </div>
+                <button type="submit" class="btn-confirm-booking" style="margin-top: 15px; margin-bottom: 0;">Xác nhận thêm</button>
+                <button type="button" id="closePetModal" style="width: 100%; padding: 12px; margin-top: 10px; border: none; background: transparent; color: #636e72; font-weight: 600; border-radius: 12px; cursor: pointer;">Hủy bỏ</button>
+            </form>
+        </div>
+    </div>
+    <script src="navigation.js"></script>
+    <script src="storage.js"></script>
+    <script src="data.js"></script>
+</body>
+</html>

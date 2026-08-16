@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tài khoản - PetCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <div class="app-content">
+        <div style="padding: 70px 20px 100px; text-align: left;">
+            <h2 class="section-title" style="margin-bottom: 20px; text-align: center;">Hồ sơ cá nhân</h2>
+            
+            <form style="background: white; padding: 20px; border-radius: 20px; box-shadow: var(--shadow-soft); margin-bottom: 25px;">
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 700; color: var(--text-color);">Họ và tên</label>
+                    <input type="text" class="form-control" value="Nguyễn Văn A" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--light-gray); background: var(--bg-color);">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 700; color: var(--text-color);">Email</label>
+                    <input type="email" class="form-control" value="nguyenvana@gmail.com" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--light-gray); background: var(--bg-color);">
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 700; color: var(--text-color);">Số điện thoại</label>
+                    <input type="tel" class="form-control" value="0901234567" style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--light-gray); background: var(--bg-color);">
+                </div>
+                <button type="button" class="btn-primary" style="width: 100%; border-radius: 25px;">Lưu thay đổi</button>
+            </form>
+
+            <div style="background: white; border-radius: 20px; box-shadow: var(--shadow-soft); overflow: hidden;">
+                <a href="#" class="profile-menu-item" style="display: flex; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid var(--light-gray); font-weight: 700; color: var(--text-color); text-decoration: none;">
+                    <span>Đổi mật khẩu</span> <i class="fa-solid fa-chevron-right" style="color: #9CA3AF;"></i>
+                </a>
+                <a href="#" class="profile-menu-item" style="display: flex; justify-content: space-between; padding: 18px 20px; border-bottom: 1px solid var(--light-gray); font-weight: 700; color: var(--text-color); text-decoration: none;">
+                    <span>Cài đặt thông báo</span> <i class="fa-solid fa-chevron-right" style="color: #9CA3AF;"></i>
+                </a>
+                <a href="#" class="profile-menu-item" style="display: flex; justify-content: space-between; padding: 18px 20px; font-weight: 700; color: #e11d48; text-decoration: none;">
+                    <span>Đăng xuất</span> <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </a>
+            </div>
+        </div>
+        </div>
+
+        <!-- Modal Đổi mật khẩu -->
+        <div id="passwordModal" class="modal-overlay">
+            <div class="modal-content" style="text-align: left; max-width: 90%; padding: 30px 20px;">
+                <h2 class="section-title" style="margin-bottom: 15px; text-align: center; font-size: 1.5rem;">Đổi mật khẩu</h2>
+                <form id="passwordForm" class="booking-form">
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Mật khẩu hiện tại</label>
+                        <input type="password" class="form-control" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Mật khẩu mới</label>
+                        <input type="password" class="form-control" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 12px;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 5px;">Xác nhận mật khẩu mới</label>
+                        <input type="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn-confirm-booking" style="margin-top: 15px; margin-bottom: 0;">Lưu mật khẩu</button>
+                    <button type="button" id="closePasswordModal" style="width: 100%; padding: 12px; margin-top: 10px; border: none; background: transparent; color: #636e72; font-weight: 600; border-radius: 12px; cursor: pointer;">Hủy bỏ</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Cài đặt thông báo -->
+        <div id="notificationModal" class="modal-overlay">
+            <div class="modal-content" style="text-align: left; max-width: 90%; padding: 30px 20px;">
+                <h2 class="section-title" style="margin-bottom: 20px; text-align: center; font-size: 1.5rem;">Cài đặt thông báo</h2>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <span style="font-weight: 600;">Nhắc lịch tiêm/khám</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <span style="font-weight: 600;">Thông báo khuyến mãi</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <span style="font-weight: 600;">Tin hệ thống</span>
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <button type="button" id="closeNotificationModal" style="width: 100%; padding: 14px; margin-top: 10px; border: none; background: #00B4D8; color: #fff; font-weight: 600; border-radius: 14px; cursor: pointer;">Đóng</button>
+            </div>
+        </div>
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Trang chủ</span></a>
+            <a href="appointments.html" class="nav-item"><i class="fa-solid fa-calendar-days"></i><span>Lịch hẹn</span></a>
+            <a href="pets.html" class="nav-item"><i class="fa-solid fa-paw"></i><span>Thú cưng</span></a>
+            <a href="profile.html" class="nav-item active"><i class="fa-solid fa-user"></i><span>Tài khoản</span></a>
+        </nav>
+    </div>
+    <script src="navigation.js"></script>
+    <script src="storage.js"></script>
+    <script src="data.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

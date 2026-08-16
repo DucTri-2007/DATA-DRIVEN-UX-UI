@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt lịch dịch vụ - PetCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <div class="app-content">
+    <!-- Mục 1: Header Thu Gọn -->
+    <header class="header-compact">
+        <div class="container">
+            <a href="index.html" class="logo">
+                🐾 PetCare
+            </a>
+            <div class="header-title">Hệ thống đặt lịch dịch vụ thú cưng</div>
+        </div>
+    </header>
+
+    <main class="schedule-container">
+        
+
+        <!-- Mục 3: Booking Form (Biểu mẫu nhiệm vụ) -->
+        <section class="booking-form-card">
+            <h2>Chi tiết đặt lịch</h2>
+            <form id="bookingForm" class="booking-form">
+                
+                <div class="form-group" style="margin-bottom: 15px;">
+                    <label style="display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.9rem;">Chọn dịch vụ</label>
+                    <select id="serviceSelect" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #D1D5DB; font-family: inherit; font-size: 0.95rem; background-color: #fff;">
+                        <option value="spa">Tắm & Cắt tỉa lông (Spa) - 450.000 đ</option>
+                        <option value="checkup">Khám sức khỏe tổng quát - 300.000 đ</option>
+                        <option value="vaccine">Tiêm phòng vắc-xin - 200.000 đ</option>
+                        <option value="hotel">Khách sạn thú cưng - 250.000 đ/ngày</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="petSelect">Chọn thú cưng áp dụng</label>
+                    <select id="petSelect" class="form-control" required>
+                        <option value="" disabled selected>-- Vui lòng chọn thú cưng --</option>
+                        <option value="lulu">Lulu (Poodle - 4kg)</option>
+                        <option value="mimi">Mimi (Mèo Anh Lông Ngắn - 5kg)</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookDate">Ngày hẹn</label>
+                        <input type="date" id="bookDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookTime">Giờ hẹn</label>
+                        <input type="time" id="bookTime" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="note">Ghi chú (Tình trạng sức khỏe, tính cách...)</label>
+                    <textarea id="note" class="form-control" placeholder="Ví dụ: Bé hay sợ người lạ, cần nhẹ nhàng..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary btn-submit">Xác nhận đặt lịch</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Mục 4: Success Modal (Màn hình hoàn tất) -->
+    <div id="successModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <h2 class="modal-title">Đặt lịch thành công!</h2>
+            <p class="modal-desc">Cảm ơn bạn đã tin tưởng PetCare. Vui lòng đưa thú cưng đến đúng giờ hẹn nhé.</p>
+            
+            <!-- Mã QR code giả lập -->
+            <div class="qr-code">
+                🎫
+            </div>
+            
+            <button type="button" onclick="window.location.href='index.html'" class="btn-primary">Về trang chủ</button>
+        </div>
+    </div>
+
+    <!-- Script xử lý hiển thị Modal & Lưu dữ liệu -->
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Ngăn chặn form submit mặc định
+            
+            const serviceSelect = document.getElementById('serviceSelect');
+            const serviceName = serviceSelect.options[serviceSelect.selectedIndex].text;
+            const petSelect = document.getElementById('petSelect').value;
+            const bookDate = document.getElementById('bookDate').value;
+            const bookTime = document.getElementById('bookTime').value;
+            const note = document.getElementById('note').value;
+
+            const newApp = {
+                id: Date.now(),
+                service: serviceName,
+                pet: petSelect,
+                date: bookDate,
+                time: bookTime,
+                note: note,
+                status: 'Sắp tới'
+            };
+
+            saveAppointment(newApp);
+
+            // Tự động chuyển hướng sang trang lịch hẹn
+            window.location.href = 'appointments.html';
+        });
+    </script>
+        </div>
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Trang chủ</span></a>
+        <a href="appointments.html" class="nav-item"><i class="fa-solid fa-calendar-days"></i><span>Lịch hẹn</span></a>
+        <a href="pets.html" class="nav-item"><i class="fa-solid fa-paw"></i><span>Thú cưng</span></a>
+        <a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Tài khoản</span></a>
+    </nav>
+    </div>
+    <script src="navigation.js"></script>
+    <script src="storage.js"></script>
+    <script src="data.js"></script>
+</body>
+</html>

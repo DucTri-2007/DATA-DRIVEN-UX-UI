@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch hẹn - PetCare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <div class="app-content">
+        <div style="padding: 70px 20px 100px; text-align: center;">
+            <h2 class="section-title" style="margin-bottom: 20px; text-align: center;">Lịch hẹn của tôi</h2>
+            <div id="appointments-render-container"></div>
+            <button class="btn-primary" style="margin-top: 20px; width: 100%; border-radius: 25px;" onclick="window.location.href='schedule.html'">+ Đặt lịch mới</button>
+        </div>
+        </div>
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Trang chủ</span></a>
+            <a href="appointments.html" class="nav-item active"><i class="fa-solid fa-calendar-days"></i><span>Lịch hẹn</span></a>
+            <a href="pets.html" class="nav-item"><i class="fa-solid fa-paw"></i><span>Thú cưng</span></a>
+            <a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Tài khoản</span></a>
+        </nav>
+    </div>
+    <script src="navigation.js"></script>
+    <script src="storage.js"></script>
+    <script src="data.js"></script>
+</body>
+</html>

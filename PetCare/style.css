@@ -1,0 +1,927 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --primary-color: #FF9F43;
+  /* Cam nhạt */
+  --secondary-color: #00CEC9;
+  /* Xanh ngọc */
+  --bg-color: #F8F9FA;
+  /* Nền tối giản */
+  --text-color: #2D3436;
+  --light-gray: #DFE6E9;
+  --white: #FFFFFF;
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.1);
+  --border-radius: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+body {
+  background-color: #e2e8f0;
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   Thành phần dùng chung (Components)
+   ========================================================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 159, 67, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #f78d2b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 159, 67, 0.4);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 206, 201, 0.3);
+}
+
+.btn-secondary:hover {
+  background-color: #00b5b0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 206, 201, 0.4);
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Trang index.html
+   ========================================================================== */
+
+/* Mục 1: Top Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  box-shadow: var(--shadow-soft);
+  padding: 16px 0;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-bar {
+  display: flex;
+  flex: 1;
+  max-width: 400px;
+  background-color: var(--bg-color);
+  border-radius: 50px;
+  padding: 8px 16px;
+  border: 1px solid var(--light-gray);
+  margin: 0 24px;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  padding: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Mục 2: Hero Banner */
+.hero {
+  padding: 80px 0;
+  background: linear-gradient(135deg, rgba(255, 159, 67, 0.1) 0%, rgba(0, 206, 201, 0.1) 100%);
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: var(--text-color);
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: #636e72;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mục 3: My Pets */
+.my-pets {
+  padding: 80px 0;
+}
+
+.pets-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.pets-header .section-title {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.pets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.pet-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.pet-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ffeaa7;
+  margin-bottom: 16px;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pet-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.pet-info {
+  color: #636e72;
+  font-size: 0.9rem;
+}
+
+/* Mục 4: Services Grid */
+.services {
+  padding: 80px 0;
+  background-color: var(--white);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.service-card {
+  background-color: var(--bg-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.service-img {
+  height: 200px;
+  background-color: var(--light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+.service-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.service-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.service-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+}
+
+.service-card .btn-primary {
+  margin-top: auto;
+  text-align: center;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Trang schedule.html
+   ========================================================================== */
+
+/* Mục 1: Header Thu Gọn */
+.header-compact {
+  background-color: var(--white);
+  padding: 20px 0;
+  box-shadow: var(--shadow-soft);
+}
+
+.header-compact .container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.header-title {
+  font-size: 1.25rem;
+  color: #636e72;
+  border-left: 2px solid var(--light-gray);
+  padding-left: 24px;
+}
+
+/* Bố cục trang schedule */
+.schedule-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+/* Mục 2: Booking Summary */
+.booking-summary {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-left: 6px solid var(--secondary-color);
+}
+
+.summary-icon {
+  font-size: 3rem;
+  background-color: rgba(0, 206, 201, 0.1);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.summary-details h3 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.summary-details p {
+  color: #636e72;
+  margin-bottom: 4px;
+}
+
+.summary-price {
+  font-weight: 800;
+  color: var(--primary-color);
+  font-size: 1.25rem;
+}
+
+/* Mục 3: Booking Form */
+.booking-form-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 32px;
+  box-shadow: var(--shadow-soft);
+}
+
+.booking-form-card h2 {
+  margin-bottom: 24px;
+}
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-color);
+}
+
+.form-control {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid var(--light-gray);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background-color: var(--bg-color);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(0, 206, 201, 0.2);
+  background-color: var(--white);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  margin-top: 16px;
+}
+
+/* Mục 4: Success Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background-color: var(--white);
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  transform: scale(0.9);
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-icon {
+  font-size: 4rem;
+  color: var(--secondary-color);
+  margin-bottom: 16px;
+}
+
+.modal-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--text-color);
+}
+
+.modal-desc {
+  color: #636e72;
+  margin-bottom: 24px;
+}
+
+.qr-code {
+  width: 150px;
+  height: 150px;
+  background-color: var(--bg-color);
+  border: 2px dashed var(--light-gray);
+  border-radius: 12px;
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+}
+
+.modal-content .btn-primary {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Mobile App UI (Ultra-Realistic Phone Mockup)
+   ========================================================================== */
+
+.app-wrapper {
+  width: 100%;
+  max-width: 450px !important;
+  height: 94vh !important;
+  max-height: 950px;
+  min-height: 750px;
+  background-color: #F9FAFB;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  /* Khóa cuộn ở thẻ cha, bắt buộc cuộn ở vùng chứa con */
+  border: 24px solid #111827 !important;
+  border-radius: 55px !important;
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+}
+
+/* Tạo vùng chứa nội dung có thể cuộn dọc và ẩn thanh cuộn */
+.app-content {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 90px !important;
+  /* Khoảng đệm đáy rộng rãi để không bị che nút bấm cuối cùng */
+}
+
+/* Ẩn thanh cuộn mặc định của vùng nội dung */
+.app-content::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Cụm Camera (Notch) */
+.app-wrapper::before {
+  content: '';
+  position: sticky;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 32px;
+  background-color: #111827;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  z-index: 10000;
+  display: block;
+  margin: 0 auto -32px auto;
+}
+
+/* Xóa sạch mọi thanh cuộn lồng nhau */
+.app-wrapper::-webkit-scrollbar,
+.app-wrapper *::-webkit-scrollbar {
+  display: none !important;
+}
+
+.app-wrapper,
+.app-wrapper * {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  box-sizing: border-box !important;
+}
+
+/* Ẩn Navbar của bản Desktop */
+.navbar,
+.desktop-header,
+.header-compact {
+  display: none !important;
+}
+
+/* Đẩy nội dung chính xuống tránh Camera */
+.app-wrapper>section:first-of-type,
+.app-wrapper>main>section:first-of-type {
+  padding-top: 60px !important;
+}
+
+/* Xử lý các thẻ con bị tràn */
+.app-wrapper section,
+.app-wrapper .container {
+  width: 100% !important;
+  overflow-x: hidden;
+}
+
+/* Cho phép các khối danh sách thẻ/bảng cuộn ngang */
+.app-wrapper table,
+.app-wrapper .card-list,
+.pets-grid,
+.services-grid {
+  display: flex;
+  width: 100%;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch;
+  padding: 10px;
+}
+
+/* Ghim chặt Bottom Nav */
+.bottom-nav {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  padding: 12px 10px 22px 10px !important;
+  box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.08) !important;
+  z-index: 999999 !important;
+  flex-shrink: 0 !important;
+  border-bottom-left-radius: 31px !important;
+  border-bottom-right-radius: 31px !important;
+  margin: 0 !important;
+}
+
+.bottom-nav .nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #9CA3AF;
+  font-size: 11px;
+  gap: 4px;
+}
+
+.bottom-nav .nav-item i {
+  font-size: 20px;
+}
+
+.bottom-nav .nav-item.active {
+  color: #00B4D8;
+}
+
+/* ==========================================================================
+   Sửa lỗi Layout (Nhiệm vụ 1, 2, 3)
+   ========================================================================== */
+
+/* NHIỆM VỤ 1: Xóa chiều cao cố định & Trả về luồng tự nhiên */
+.app-wrapper section,
+.app-wrapper header,
+.app-wrapper .hero-section,
+.app-wrapper .hero,
+.app-wrapper .container {
+  height: auto !important;
+  min-height: min-content !important;
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NHIỆM VỤ 2: Tạo sự liền mạch cho Hero Section */
+.hero-section,
+.hero {
+  padding: 70px 20px 40px 20px !important;
+  margin-bottom: 25px !important;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-section h1,
+.hero h1 {
+  font-size: 26px !important;
+  line-height: 1.4 !important;
+  margin-bottom: 15px !important;
+  white-space: normal !important;
+}
+
+/* NHIỆM VỤ 3: Sắp xếp lại các khối bên dưới */
+.app-wrapper>section+section {
+  margin-top: 20px !important;
+}
+
+.card-list,
+.service-list,
+.pets-grid,
+.services-grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto !important;
+  padding-bottom: 10px;
+}
+
+/* ==========================================================================
+   Horizontal Scroll cho Dịch vụ nổi bật (Nhiệm vụ 1, 2, 3)
+   ========================================================================== */
+
+/* NHIỆM VỤ 1: KÍCH HOẠT VUỐT NGANG CHO VÙNG CHỨA */
+.services-grid {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  /* Tuyệt đối không cho rớt dòng */
+  overflow-x: auto !important;
+  /* Cho phép vuốt ngang */
+  gap: 15px !important;
+  padding: 10px 20px 25px 20px !important;
+  -webkit-overflow-scrolling: touch;
+  /* Tạo cảm giác vuốt mượt mà trên mobile */
+  width: 100% !important;
+}
+
+/* Ẩn thanh cuộn ngang để giao diện sạch sẽ */
+.services-grid::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* NHIỆM VỤ 2: CỐ ĐỊNH KÍCH THƯỚC THẺ DỊCH VỤ */
+.service-card {
+  flex: 0 0 160px !important;
+  /* Độ rộng cố định 160px */
+  min-width: 160px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  background-color: #ffffff;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05) !important;
+  padding: 15px !important;
+  height: auto !important;
+}
+
+/* NHIỆM VỤ 3: CĂN CHỈNH LẠI CHỮ & NÚT BẤM BÊN TRONG */
+.service-card h3,
+.service-card .service-title {
+  font-size: 15px !important;
+  text-align: center !important;
+  white-space: normal !important;
+  /* Cho phép tên dịch vụ dài rớt xuống dòng 2 */
+  margin: 12px 0 8px 0 !important;
+  line-height: 1.4 !important;
+  color: #1F2937 !important;
+}
+
+.service-card .service-price {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: #F97316 !important;
+  /* Màu cam nổi bật */
+  margin-bottom: 15px !important;
+  margin-top: auto !important;
+  /* Đẩy giá và nút bấm xuống đáy thẻ */
+}
+
+.service-card .btn-primary {
+  width: 100% !important;
+  padding: 10px 0 !important;
+  border-radius: 25px !important;
+  font-size: 13px !important;
+  white-space: nowrap !important;
+}
+
+/* ==========================================================================
+   Cải thiện Giao diện Form & Nút Bấm (Nhiệm vụ 2, 3)
+   ========================================================================== */
+
+/* Đảm bảo nút xác nhận đặt lịch nổi bật và nằm trọn trong khung nhìn */
+.btn-confirm-booking,
+.booking-form button[type="submit"],
+.booking-form .btn-primary {
+  width: 100% !important;
+  padding: 14px 0 !important;
+  border-radius: 14px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  background: linear-gradient(135deg, #00B4D8, #0077B6) !important;
+  color: #fff !important;
+  border: none !important;
+  cursor: pointer !important;
+  margin-top: 20px !important;
+  box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3) !important;
+}
+
+/* Căn chỉnh lại các trường nhập liệu (Inputs) */
+.booking-form .form-row,
+.booking-form .date-time-wrapper {
+  display: flex;
+  gap: 12px;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  font-size: 0.95rem !important;
+  border-radius: 10px !important;
+  border: 1px solid #D1D5DB !important;
+  padding: 12px !important;
+}
+
+/* Đảm bảo khối chứa form hoặc nút bấm có khoảng cách margin an toàn */
+.booking-form,
+form {
+  margin-bottom: 30px !important;
+}
+
+/* ==========================================================================
+   MODAL STYLES (Bounded to App Wrapper)
+   ========================================================================== */
+
+.modal-overlay, .modal {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    display: none !important; /* Mặc định ẩn */
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 999999 !important;
+    padding: 15px !important;
+    box-sizing: border-box !important;
+}
+
+.modal-overlay.active, .modal.active {
+    display: flex !important; /* Hiển thị khi có class active */
+}
+
+.modal-content, .modal-box {
+    width: 90% !important;
+    max-width: 380px !important;
+    max-height: 85% !important;
+    background-color: #ffffff !important;
+    border-radius: 24px !important;
+    padding: 20px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+    overflow-y: auto !important; /* Cho phép cuộn bên trong modal nếu nội dung dài */
+    box-sizing: border-box !important;
+}
+
+/* Thu gọn khoảng cách các trường input bên trong modal cho cân đối */
+.modal-content .form-group {
+    margin-bottom: 12px !important;
+}
+
+.modal-content input, .modal-content select {
+    padding: 10px 12px !important;
+    font-size: 0.9rem !important;
+}
+
+/* ==========================================================================
+   Tương tác Profile menu & Toggle Switch
+   ========================================================================== */
+.profile-menu-item {
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    cursor: pointer !important;
+}
+.profile-menu-item:hover {
+    background-color: #f8fafc;
+}
+.profile-menu-item:active {
+    background-color: #f1f5f9;
+}
+
+/* Toggle Switch CSS */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #cbd5e1;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #00B4D8;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #00B4D8;
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

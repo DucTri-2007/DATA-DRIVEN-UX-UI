@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare - Quản lý thú cưng & Đặt lịch dịch vụ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-wrapper">
+        <div class="app-content">
+            <!-- Mục 1: Top Navbar (Thanh điều hướng) -->
+            <header class="navbar">
+                <div class="container">
+                    <a href="index.html" class="logo">
+                        🐾 PetCare
+                    </a>
+
+                    <div class="search-bar">
+                        <input type="text" placeholder="Tìm kiếm dịch vụ, thú cưng...">
+                    </div>
+
+                    <div class="user-info">
+                        <span>Xin chào, Nguyễn Văn A</span>
+                        <div class="avatar">A</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Mục 2: Hero Banner -->
+            <section class="hero">
+                <div class="container">
+                    <h1>Chăm sóc thú cưng toàn diện</h1>
+                    <p>Yêu thương như chính con bạn. Nền tảng đặt lịch dịch vụ thú cưng nhanh chóng, tiện lợi với đội
+                        ngũ chuyên gia hàng đầu.</p>
+                    <a href="#services-section" class="btn-primary">Đặt lịch ngay</a>
+                </div>
+            </section>
+
+            <!-- Mục 3: My Pets (Thú cưng của tôi) -->
+            <section class="my-pets">
+                <div class="container">
+                    <div class="pets-header">
+                        <h2 class="section-title">Thú cưng của tôi</h2>
+                        <a href="pets.html?action=add" class="btn-secondary" style="text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">+ Thêm thú cưng mới</a>
+                    </div>
+
+                    <div class="pets-grid">
+                        <!-- Thú cưng 1 -->
+                        <div class="pet-card">
+                            <div class="pet-avatar">🐶</div>
+                            <h3 class="pet-name">Lulu</h3>
+                            <div class="pet-info">
+                                <p>Giống: Poodle</p>
+                                <p>Cân nặng: 4kg | Tuổi: 2 tuổi</p>
+                            </div>
+                        </div>
+                        <!-- Thú cưng 2 -->
+                        <div class="pet-card">
+                            <div class="pet-avatar">🐱</div>
+                            <h3 class="pet-name">Mimi</h3>
+                            <div class="pet-info">
+                                <p>Giống: Mèo Anh Lông Ngắn</p>
+                                <p>Cân nặng: 5kg | Tuổi: 3 tuổi</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mục 4: Services Grid (Dịch vụ) -->
+            <section id="services-section" class="services">
+                <div class="container">
+                    <h2 class="section-title">Dịch vụ nổi bật</h2>
+
+                    <div class="services-grid">
+                        <!-- Dịch vụ 1 -->
+                        <div class="service-card">
+                            <div class="service-img" style="background-color: #ffeaa7;">🩺</div>
+                            <div class="service-content">
+                                <h3 class="service-title">Khám sức khỏe tổng quát</h3>
+                                <div class="service-price">300.000 ₫</div>
+                                <a href="schedule.html" class="btn-primary">Đặt lịch</a>
+                            </div>
+                        </div>
+
+                        <!-- Dịch vụ 2 -->
+                        <div class="service-card">
+                            <div class="service-img" style="background-color: #81ecec;">✂️</div>
+                            <div class="service-content">
+                                <h3 class="service-title">Tắm & Cắt tỉa lông (Spa)</h3>
+                                <div class="service-price">450.000 ₫</div>
+                                <a href="schedule.html" class="btn-primary">Đặt lịch</a>
+                            </div>
+                        </div>
+
+                        <!-- Dịch vụ 3 -->
+                        <div class="service-card">
+                            <div class="service-img" style="background-color: #fab1a0;">💉</div>
+                            <div class="service-content">
+                                <h3 class="service-title">Tiêm phòng vắc-xin</h3>
+                                <div class="service-price">200.000 ₫</div>
+                                <a href="schedule.html" class="btn-primary">Đặt lịch</a>
+                            </div>
+                        </div>
+
+                        <!-- Dịch vụ 4 -->
+                        <div class="service-card">
+                            <div class="service-img" style="background-color: #74b9ff;">🏨</div>
+                            <div class="service-content">
+                                <h3 class="service-title">Khách sạn thú cưng</h3>
+                                <div class="service-price">250.000 ₫ / ngày</div>
+                                <a href="schedule.html" class="btn-primary">Đặt lịch</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item active"><i class="fa-solid fa-house"></i><span>Trang chủ</span></a>
+            <a href="appointments.html" class="nav-item"><i class="fa-solid fa-calendar-days"></i><span>Lịch
+                    hẹn</span></a>
+            <a href="pets.html" class="nav-item"><i class="fa-solid fa-paw"></i><span>Thú cưng</span></a>
+            <a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Tài khoản</span></a>
+        </nav>
+    </div>
+    <script src="navigation.js"></script>
+    <script src="storage.js"></script>
+    <script src="data.js"></script>
+</body>
+
+</html>
