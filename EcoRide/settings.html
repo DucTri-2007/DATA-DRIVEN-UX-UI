@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EcoRide - CĂ i Ä‘áº·t</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .setting-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        .setting-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .setting-card-title i {
+            color: var(--primary-color);
+        }
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #F3F4F6;
+        }
+        .setting-item:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+        .setting-info h3 {
+            font-size: 1.05rem;
+            color: #374151;
+            margin-bottom: 4px;
+        }
+        .setting-info p {
+            color: #6B7280;
+            font-size: 0.9rem;
+        }
+        
+        /* Modern Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #E5E7EB;
+            transition: .3s;
+            border-radius: 34px;
+        }
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .3s;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        input:checked + .toggle-slider {
+            background-color: var(--primary-color);
+        }
+        input:checked + .toggle-slider:before {
+            transform: translateX(22px);
+        }
+        
+        /* Modern Inputs */
+        .setting-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #D1D5DB;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #374151;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            margin-top: 8px;
+        }
+        .setting-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #4B5563;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-leaf"></i> EcoRide</a>
+            <nav class="nav-menu">
+                <a href="index.html">Trang chá»§</a>
+                <a href="trips.html">Chuyáº¿n Ä‘i</a>
+                <a href="support.html">Trá»£ giĂºp</a>
+                <a href="promos.html">Æ¯u Ä‘Ă£i</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="eco-badge" title="Äiá»ƒm sinh thĂ¡i">đŸŒ± 12.5kg CO2 Ä‘Ă£ giáº£m</div>
+                <a href="eco-plus.html" id="btnEcoPlus" class="btn-outline eco-plus-cta" title="Trá»Ÿ thĂ nh há»™i viĂªn VIP Ä‘á»ƒ nháº­n Æ°u Ä‘Ă£i vĂ´ háº¡n">âœ¨ ÄÄƒng kĂ½ Eco+</a>
+                <div class="user-menu-wrapper" id="userMenuWrapper">
+                    <div class="user-avatar" id="userAvatar">
+                        <img src="https://i.pravatar.cc/150?img=68" alt="Avatar">
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; color: #6B7280; margin-left: 6px;"></i>
+                    </div>
+                    <div class="user-dropdown" id="dropdownMenu">
+                        <ul>
+                            <li><a href="profile.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-regular fa-user"></i> Há»“ sÆ¡ cĂ¡ nhĂ¢n</a></li>
+                            <li class="text-green"><a href="trips.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-car-side"></i> Lá»‹ch sá»­ chuyáº¿n Ä‘i</a></li>
+                            <li><a href="wallet.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-wallet"></i> VĂ­ EcoPay</a></li>
+                            <li><a href="settings.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-gear"></i> CĂ i Ä‘áº·t</a></li>
+                            <hr>
+                            <li id="menuLogout" class="logout-item"><i class="fa-solid fa-arrow-right-from-bracket"></i> ÄÄƒng xuáº¥t</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 40px 20px; max-width: 700px; min-height: calc(100vh - 100px);">
+        <h2 class="section-title">CĂ i Ä‘áº·t há»‡ thá»‘ng</h2>
+        <form id="settingsForm">
+            <!-- NhĂ³m 1: ThĂ´ng bĂ¡o & Tráº£i nghiá»‡m -->
+            <div class="setting-card">
+                <div class="setting-card-title"><i class="fa-solid fa-bell"></i> ThĂ´ng bĂ¡o & Tráº£i nghiá»‡m</div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h3>ThĂ´ng bĂ¡o Ä‘áº©y (Push Notifications)</h3>
+                        <p>Nháº­n tráº¡ng thĂ¡i chuyáº¿n xe, tĂ i xáº¿ Ä‘áº¿n Ä‘Ă³n vĂ  khuyáº¿n mĂ£i.</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="settingPushNotif" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <div class="setting-info">
+                        <h3>Tá»± Ä‘á»™ng chia sáº» lá»™ trĂ¬nh an toĂ n</h3>
+                        <p>Gá»­i hĂ nh trĂ¬nh chuyáº¿n Ä‘i cho ngÆ°á»i thĂ¢n qua SMS/Zalo.</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="settingAutoShare">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- NhĂ³m 2: Tiá»‡n Ă­ch cĂ¡ nhĂ¢n hĂ³a -->
+            <div class="setting-card">
+                <div class="setting-card-title"><i class="fa-solid fa-map-location-dot"></i> Tiá»‡n Ă­ch cĂ¡ nhĂ¢n hĂ³a</div>
+                
+                <div class="input-group">
+                    <label for="settingHomeAddress">Äá»‹a chá»‰ NhĂ  riĂªng</label>
+                    <input type="text" id="settingHomeAddress" class="setting-input" placeholder="VĂ­ dá»¥: 123 ÄÆ°á»ng A, Quáº­n 1...">
+                </div>
+                
+                <div class="input-group" style="margin-bottom: 0;">
+                    <label for="settingWorkAddress">Äá»‹a chá»‰ CĂ´ng ty</label>
+                    <input type="text" id="settingWorkAddress" class="setting-input" placeholder="VĂ­ dá»¥: TĂ²a nhĂ  B, Quáº­n 3...">
+                </div>
+            </div>
+
+            <!-- NhĂ³m 3: Báº£o máº­t tĂ i khoáº£n -->
+            <div class="setting-card">
+                <div class="setting-card-title"><i class="fa-solid fa-shield-halved"></i> Báº£o máº­t tĂ i khoáº£n</div>
+                
+                <div class="input-group">
+                    <label for="currentPassword">Máº­t kháº©u hiá»‡n táº¡i</label>
+                    <input type="password" id="currentPassword" class="setting-input" placeholder="Nháº­p máº­t kháº©u hiá»‡n táº¡i">
+                </div>
+                
+                <div class="input-group" style="margin-bottom: 0;">
+                    <label for="newPassword">Máº­t kháº©u má»›i</label>
+                    <input type="password" id="newPassword" class="setting-input" placeholder="Nháº­p máº­t kháº©u má»›i">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary" id="btnSaveSettings" style="width: 100%; padding: 15px; font-size: 1.1rem; border-radius: 12px; margin-bottom: 40px; box-shadow: 0 10px 15px -3px rgba(16,185,129,0.3); border: none; cursor: pointer; transition: transform 0.2s ease;">LÆ°u cáº¥u hĂ¬nh</button>
+        </form>
+    </section>
+
+    <!-- Script chung -->
+    <script src="script.js"></script>
+    <!-- ==============================================
+         BOTTOM NAVIGATION BAR
+         ============================================== -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Trang chủ</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+            <i class="fa-solid fa-car-side"></i>
+            <span>Hoạt động</span>
+        </a>
+        <a href="support.html" class="nav-item">
+            <i class="fa-solid fa-message"></i>
+            <span>Tin nhắn</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fa-solid fa-user"></i>
+            <span>Tài khoản</span>
+        </a>
+    </nav>
+    </div>
+</body>
+</html>
+

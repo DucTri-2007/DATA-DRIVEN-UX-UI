@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EcoRide - Hồ sơ cA� nhA�n</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <!-- TOP NAVBAR ĐỒNG BỘ -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-leaf"></i> EcoRide
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Trang chủ</a>
+                <a href="trips.html">Chuyến đi</a>
+                <a href="support.html">Trợ giA�p</a>
+                <a href="promos.html">Ưu đA�i</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="eco-badge" title="Điểm sinh thA�i">d��� 12.5kg CO2 đA� giảm</div>
+                <a href="eco-plus.html" id="btnEcoPlus" class="btn-outline eco-plus-cta" title="Trở thA�nh hội viA�n VIP để nhận ưu đA�i vA� hạn">✨ Đăng kA� Eco+</a>
+                <div class="user-menu-wrapper" id="userMenuWrapper">
+                    <div class="user-avatar" id="userAvatar">
+                        <img src="https://i.pravatar.cc/150?img=68" alt="Avatar người dA�ng">
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; color: #6B7280; margin-left: 6px;"></i>
+                    </div>
+                    <div class="user-dropdown" id="dropdownMenu">
+                        <ul>
+                            <li><a href="profile.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-regular fa-user"></i> Hồ sơ cA� nhA�n</a></li>
+                            <li class="text-green"><a href="trips.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-car-side"></i> Lịch sử chuyến đi</a></li>
+                            <li><a href="wallet.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-wallet"></i> VA� EcoPay</a></li>
+                            <li><a href="settings.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-gear"></i> CA�i đặt</a></li>
+                            <hr>
+                            <li id="menuLogout" class="logout-item"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 40px 20px; max-width: 800px; min-height: calc(100vh - 100px);">
+        <h2 class="section-title">Hồ sơ cA� nhA�n</h2>
+        <div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <img src="https://i.pravatar.cc/150?img=68" alt="Avatar" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary-color); object-fit: cover; margin-bottom: 15px;">
+                <h3 id="displayName" style="font-size: 1.5rem;">Trần Văn A</h3>
+                <p style="color: var(--text-muted);">ThA�nh viA�n EcoRide</p>
+            </div>
+            
+            <form id="profileForm" class="booking-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-group" style="grid-column: span 2;">
+                    <label>Họ vA� tA�n</label>
+                    <input type="text" id="profileName" value="Trần Văn A">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="profileEmail" value="tranvana@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="tel" id="profilePhone" value="0901234567">
+                </div>
+                <div class="form-group" style="grid-column: span 2;">
+                    <label>Địa chỉ</label>
+                    <input type="text" id="profileAddress" value="123 Nguyễn Huệ, Q.1, TP.HCM">
+                </div>
+                <div style="grid-column: span 2; margin-top: 15px;">
+                    <button type="button" id="btnSaveProfile" class="btn-primary" style="width: 100%;">Lưu thay đổi</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Script chung -->
+    <script src="script.js"></script>
+    <!-- ==============================================
+         BOTTOM NAVIGATION BAR
+         ============================================== -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Trang ch?</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+            <i class="fa-solid fa-car-side"></i>
+            <span>Ho?t d?ng</span>
+        </a>
+        <a href="support.html" class="nav-item">
+            <i class="fa-solid fa-message"></i>
+            <span>Tin nh?n</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fa-solid fa-user"></i>
+            <span>T�i kho?n</span>
+        </a>
+    </nav>
+    </div>
+</body>
+</html>
+

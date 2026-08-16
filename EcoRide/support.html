@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EcoRide - Trung tâm Trợ giúp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+    <div class="app-wrapper">
+    <!-- TOP NAVBAR -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-leaf"></i> EcoRide
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Trang chủ</a>
+                <a href="trips.html">Chuyến đi</a>
+                <a href="support.html" class="active">Trợ giúp</a>
+                <a href="promos.html">Ưu đãi</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="eco-badge" title="Điểm sinh thái">🌱 12.5kg CO2 đã giảm</div>
+                <a href="eco-plus.html" id="btnEcoPlus" class="btn-outline eco-plus-cta" title="Trở thành hội viên VIP để nhận ưu đãi vô hạn">✨ Đăng ký Eco+</a>
+                <div class="user-menu-wrapper" id="userMenuWrapper">
+                    <div class="user-avatar" id="userAvatar">
+                        <img src="https://i.pravatar.cc/150?img=68" alt="Avatar người dùng">
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; color: #6B7280; margin-left: 6px;"></i>
+                    </div>
+                    <div class="user-dropdown" id="dropdownMenu">
+                        <ul>
+                            <li><a href="profile.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-regular fa-user"></i> Hồ sơ cá nhân</a></li>
+                            <li class="text-green"><a href="trips.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-car-side"></i> Lịch sử chuyến đi</a></li>
+                            <li><a href="wallet.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-wallet"></i> Ví EcoPay</a></li>
+                            <li><a href="settings.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-gear"></i> Cài đặt</a></li>
+                            <hr>
+                            <li id="menuLogout" class="logout-item"><i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng xuất</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SEARCH SECTION -->
+    <section class="support-hero">
+        <div class="container text-center">
+            <h1 style="color: white; margin-bottom: 20px; font-size: 2.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Chúng tôi có thể giúp gì cho bạn hôm nay?</h1>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Nhập từ khóa (vd: Hủy chuyến, Mã giảm giá, Nạp tiền)">
+            </div>
+        </div>
+    </section>
+
+    <!-- NỘI DUNG CHÍNH (Help Center) -->
+    <section class="container support-content" style="padding: 40px 20px; min-height: calc(100vh - 350px);">
+        
+        <!-- Quick Contact Cards -->
+        <div class="contact-grid">
+            <div class="contact-card" onclick="triggerToast('Đang gọi Tổng đài 1900 xxxx...')">
+                <div class="contact-icon" style="color: #EF4444; background: #FEE2E2;"><i class="fa-solid fa-phone-volume"></i></div>
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Hotline 24/7</h3>
+                    <p style="color: #6B7280; font-size: 0.9rem;">Hỗ trợ khẩn cấp sự cố dọc đường (1900 xxxx)</p>
+                </div>
+            </div>
+            <div class="contact-card" onclick="triggerToast('Đang kết nối với Tổng đài viên...')">
+                <div class="contact-icon" style="color: #10B981; background: #D1FAE5;"><i class="fa-solid fa-headset"></i></div>
+                <div>
+                    <h3 style="font-size: 1.1rem; margin-bottom: 5px;">Chat với tổng đài viên</h3>
+                    <p style="color: #6B7280; font-size: 0.9rem;">Phản hồi trong 3-5 phút</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px;">
+            <!-- FAQ Accordion -->
+            <div class="faq-section">
+                <h2 class="section-title">Câu hỏi thường gặp</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Làm thế nào để áp dụng mã giảm giá / voucher vào chuyến đi?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Tại màn hình Thanh toán, bạn chỉ cần bấm vào ô "Chọn mã ưu đãi (Voucher)". Hệ thống sẽ tự động liệt kê các mã bạn đã lưu trong kho. Khi chọn mã, hệ thống sẽ ngay lập tức tính toán và trừ thẳng số tiền giảm vào tổng cước phí.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Tôi để quên đồ trên xe EcoRide thì liên hệ thế nào?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Đừng quá lo lắng! Bạn hãy vào mục "Chuyến đi", chọn chuyến đi vừa hoàn thành và bấm "Gọi tài xế" (trong vòng 24h). Nếu không liên lạc được, hãy điền Form Yêu cầu hỗ trợ bên cạnh và chọn vấn đề "Quên đồ trên xe", chúng tôi sẽ hỗ trợ tìm lại cho bạn.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Chính sách hủy chuyến và hoàn tiền vào ví EcoPay ra sao?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Nếu bạn hủy chuyến trước khi tài xế bắt đầu di chuyển đến điểm đón, bạn sẽ không bị trừ phí. Nếu tiền đã được giữ trong ví, EcoPay sẽ tự động hoàn lại số tiền đó vào ví của bạn trong vòng 1-3 phút.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Làm sao để liên kết và nạp tiền vào ví điện tử?
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Bạn vào mục "Ví EcoPay", bấm nút "Nạp tiền" màu xanh lớn ở góc trái. Tại đây bạn có thể chọn số tiền cần nạp, phương thức thanh toán qua thẻ ngân hàng hoặc Momo/ZaloPay. Giao dịch sẽ được ghi nhận ngay lập tức vào lịch sử phía dưới.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Ticket Form -->
+            <div class="ticket-section">
+                <div class="ticket-card-form">
+                    <h2 class="section-title" style="margin-bottom: 20px;">Gửi yêu cầu hỗ trợ</h2>
+                    <form id="supportForm">
+                        <div class="form-group">
+                            <label>Mã chuyến đi (Tùy chọn)</label>
+                            <input type="text" id="tripCode" placeholder="#ECO..." style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; margin-top: 5px;">
+                        </div>
+                        <div class="form-group" style="margin-top: 15px;">
+                            <label>Vấn đề gặp phải</label>
+                            <select id="issueType" required style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; margin-top: 5px;">
+                                <option value="" disabled selected>-- Chọn vấn đề --</option>
+                                <option value="wrong_route">Tài xế đi sai lộ trình</option>
+                                <option value="attitude">Thái độ tài xế không tốt</option>
+                                <option value="payment">Sự cố thanh toán / Trừ sai tiền</option>
+                                <option value="lost_item">Để quên đồ trên xe</option>
+                                <option value="other">Vấn đề khác</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-top: 15px; margin-bottom: 20px;">
+                            <label>Chi tiết sự cố</label>
+                            <textarea id="issueDetails" rows="4" placeholder="Mô tả chi tiết để chúng tôi có thể hỗ trợ bạn tốt nhất..." required style="width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; margin-top: 5px; resize: none;"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-100">Gửi yêu cầu hỗ trợ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script chung -->
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // FAQ Accordion Logic
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all
+                    faqItems.forEach(faq => faq.classList.remove('active'));
+                    
+                    // Open clicked one if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // Form Submit Logic
+            const supportForm = document.getElementById('supportForm');
+            if (supportForm) {
+                supportForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (window.showToast) {
+                        showToast('Thành công', 'Yêu cầu hỗ trợ của bạn đã được tiếp nhận. Tổng đài viên sẽ phản hồi trong 3 phút!', 'success');
+                    }
+                    supportForm.reset();
+                });
+            }
+        });
+
+        // Trigger Toast for Contact Cards
+        function triggerToast(message) {
+            if (window.showToast) {
+                showToast('Đang kết nối', message, 'success');
+            }
+        }
+    </script>
+    <!-- ==============================================
+         BOTTOM NAVIGATION BAR
+         ============================================== -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Trang chủ</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+            <i class="fa-solid fa-car-side"></i>
+            <span>Hoạt động</span>
+        </a>
+        <a href="support.html" class="nav-item active">
+            <i class="fa-solid fa-message"></i>
+            <span>Tin nhắn</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fa-solid fa-user"></i>
+            <span>Tài khoản</span>
+        </a>
+    </nav>
+    </div>
+</body>
+</html>

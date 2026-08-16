@@ -1,0 +1,532 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EcoRide - Thanh toĂ¡n & VĂ© Ä‘iá»‡n tá»­</title>
+    <!-- NhĂºng font chá»¯ Inter tá»« Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- NhĂºng FontAwesome Ä‘á»ƒ sá»­ dá»¥ng icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- LiĂªn káº¿t Ä‘áº¿n file CSS cá»§a dá»± Ă¡n -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <!-- ==============================================
+         Má»¤C 1: MINIMAL HEADER
+         ============================================== -->
+    <header class="minimal-header">
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-leaf"></i> EcoRide
+        </a>
+        <div class="header-message">
+            <i class="fa-solid fa-shield-halved"></i> Thanh toĂ¡n an toĂ n - Giáº£m phĂ¡t tháº£i CO2
+        </div>
+    </header>
+
+    <div class="booking-container">
+        
+        <!-- ==============================================
+             Má»¤C 2: TĂ“M Táº®T CHUYáº¾N ÄI (TRIP SUMMARY)
+             ============================================== -->
+        <div class="trip-summary card-layout">
+            <h2>TĂ³m táº¯t chuyáº¿n Ä‘i</h2>
+            <!-- Chi tiáº¿t lá»™ trĂ¬nh -->
+            <div class="route-details">
+                <div class="route-point">
+                    <div class="point-icon"><i class="fa-regular fa-circle-dot"></i></div>
+                    <div class="point-text" style="width: 100%;">
+                        <span>Äiá»ƒm Ä‘Ă³n</span>
+                        <select id="bookingPickupSelect" class="form-select" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 0.95rem; font-weight: 600; color: var(--text-main); background: #F9FAFB; outline: none; margin-top: 4px; cursor: pointer;">
+                            <option value="123 Nguyá»…n Huá»‡">123 Nguyá»…n Huá»‡, Quáº­n 1, TP.HCM</option>
+                            <option value="Landmark 81">Landmark 81, BĂ¬nh Tháº¡nh</option>
+                            <option value="Takashimaya">Takashimaya / Saigon Centre</option>
+                            <option value="Crescent Mall">Crescent Mall, Quáº­n 7</option>
+                            <option value="SĂ¢n bay TĂ¢n SÆ¡n Nháº¥t">SĂ¢n bay TĂ¢n SÆ¡n Nháº¥t</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="route-line"></div>
+                <div class="route-point">
+                    <div class="point-icon dest"><i class="fa-solid fa-location-dot"></i></div>
+                    <div class="point-text" style="width: 100%;">
+                        <span>Äiá»ƒm Ä‘áº¿n</span>
+                        <select id="bookingDropoffSelect" class="form-select" style="width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: inherit; font-size: 0.95rem; font-weight: 600; color: var(--text-main); background: #F9FAFB; outline: none; margin-top: 4px; cursor: pointer;">
+                            <option value="SĂ¢n bay TĂ¢n SÆ¡n Nháº¥t">SĂ¢n bay TĂ¢n SÆ¡n Nháº¥t</option>
+                            <option value="Landmark 81">Landmark 81, BĂ¬nh Tháº¡nh</option>
+                            <option value="Takashimaya">Takashimaya / Saigon Centre</option>
+                            <option value="Crescent Mall">Crescent Mall, Quáº­n 7</option>
+                            <option value="123 Nguyá»…n Huá»‡">123 Nguyá»…n Huá»‡, Quáº­n 1, TP.HCM</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ThĂ´ng tin xe vĂ  khoáº£ng cĂ¡ch -->
+            <div class="trip-stats">
+                <div class="stat-item">
+                    <i class="fa-solid fa-car-side"></i>
+                    <span id="bookingCarNameUI">VinFast VF 8 (Mid-size SUV)</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fa-solid fa-route"></i>
+                    <span id="bookingDistanceUI">7.5 km</span>
+                </div>
+            </div>
+
+            <!-- Con sá»‘ mĂ´i trÆ°á»ng -->
+            <div class="eco-message">
+                <i class="fa-solid fa-tree"></i> Báº¡n Ä‘Ă£ giĂºp giáº£m <strong>2.5kg CO2</strong> cho chuyáº¿n Ä‘i nĂ y.
+            </div>
+        </div>
+
+        <!-- ==============================================
+             Má»¤C 3: BIá»‚U MáºªU NHIá»†M Vá»¤ (CHECKOUT FORM)
+             ============================================== -->
+        <div class="checkout-section card-layout">
+            <h2>Thanh toĂ¡n</h2>
+            <form id="checkoutForm" class="checkout-form">
+                <!-- Chá»n phÆ°Æ¡ng thá»©c thanh toĂ¡n -->
+                <div class="payment-methods">
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="credit">
+                        <div class="option-content">
+                            <i class="fa-brands fa-cc-visa"></i> Tháº» tĂ­n dá»¥ng
+                        </div>
+                    </label>
+                    <label class="payment-option">
+                        <input type="radio" name="payment" value="ecopay" checked>
+                        <div class="option-content">
+                            <i class="fa-solid fa-wallet"></i> VĂ­ Ä‘iá»‡n tá»­ EcoPay
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Nháº­p mĂ£ khuyáº¿n mĂ£i -->
+                <div class="promo-code" style="display: block; border: none; padding: 0;">
+                    <label style="display: block; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; font-weight: 500;">Chá»n mĂ£ Æ°u Ä‘Ă£i (Voucher)</label>
+                    <select id="bookingVoucherSelect" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-family: inherit; outline: none; background: #F9FAFB;">
+                        <option value="0">-- KhĂ´ng dĂ¹ng Æ°u Ä‘Ă£i --</option>
+                    </select>
+                </div>
+
+                <!-- Báº£ng tĂ­nh tá»•ng tiá»n -->
+                <div class="price-breakdown">
+                    <div class="price-row">
+                        <span>CÆ°á»›c phĂ­ gá»‘c</span>
+                        <span id="bookingBasePrice">120.000 Ä‘</span>
+                    </div>
+                    <div class="price-row">
+                        <span>PhĂ­ ná»n táº£ng</span>
+                        <span>5.000 Ä‘</span>
+                    </div>
+                    <div class="price-row" id="bookingDiscountRow" style="color: #10B981; font-weight: 500;">
+                        <span>Giáº£m giĂ¡ (MĂ£ Æ°u Ä‘Ă£i)</span>
+                        <span id="bookingDiscountAmount">-0 Ä‘</span>
+                    </div>
+                    <div class="price-row total" style="border-top: 2px dashed #E5E7EB; padding-top: 15px; margin-top: 5px;">
+                        <span>Tá»•ng thanh toĂ¡n</span>
+                        <span id="bookingFinalPrice">125.000 Ä‘</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary w-100">XĂ¡c nháº­n & Thanh toĂ¡n</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- ==============================================
+         Má»¤C 4: E-TICKET MODAL (MĂ€N HĂŒNH HOĂ€N Táº¤T)
+         ============================================== -->
+    <div id="eTicketModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h2>Äáº·t chuyáº¿n thĂ nh cĂ´ng!</h2>
+                <p>TĂ i xáº¿ Ä‘ang di chuyá»ƒn Ä‘áº¿n Ä‘iá»ƒm Ä‘Ă³n cá»§a báº¡n.</p>
+            </div>
+            
+            <!-- Khung VĂ© Ä‘iá»‡n tá»­ -->
+            <div class="ticket-card">
+                <div class="ticket-driver">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="TĂ i xáº¿">
+                    <div class="driver-info">
+                        <h3>Tráº§n VÄƒn A</h3>
+                        <p><i class="fa-solid fa-star"></i> 4.9 (120 chuyáº¿n)</p>
+                    </div>
+                    <div class="license-plate">
+                        <span>51H-123.45</span>
+                        <small>VinFast VF8 - Xanh</small>
+                    </div>
+                </div>
+                <div class="ticket-qr">
+                    <!-- Giáº£ láº­p QR Code -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=EcoRide-Ticket-12345" alt="QR Code VĂ©">
+                    <p>MĂ£ vĂ©: #ECO12345</p>
+                </div>
+            </div>
+
+            <button type="button" class="btn-primary w-100" onclick="startTracking()">Theo dĂµi chuyáº¿n Ä‘i</button>
+        </div>
+    </div>
+
+    <!-- ==============================================
+         Má»¤C 5: TRACKING MODAL (MĂ” PHá»NG THEO DĂ•I)
+         ============================================== -->
+    <div id="trackingModal" class="modal-overlay" style="background: rgba(17, 24, 39, 0.75); backdrop-filter: blur(8px);">
+        <div class="modal-content" style="padding: 0; overflow: hidden; background: #ffffff; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); max-width: 400px; margin: auto;">
+            <!-- Map Placeholder -->
+            <div style="height: 250px; background: url('https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover; position: relative;">
+                <div style="position: absolute; top: 15px; left: 15px; background: white; padding: 8px 15px; border-radius: 20px; font-weight: 600; box-shadow: 0 4px 6px rgba(0,0,0,0.1); color: var(--primary-color);">
+                    <i class="fa-solid fa-location-arrow"></i> Theo dĂµi hĂ nh trĂ¬nh
+                </div>
+            </div>
+            
+            <div style="padding: 25px;">
+                <h3 id="trackingStatusText" style="margin-bottom: 5px; font-size: 1.25rem; font-weight: 700; color: #111827;">TĂ i xáº¿ Ä‘ang Ä‘áº¿n Ä‘iá»ƒm Ä‘Ă³n...</h3>
+                <p id="trackingDriverInfo" style="color: #4B5563; margin-bottom: 20px; font-size: 0.95rem;">Biá»ƒn sá»‘: <strong>51H-123.45</strong> â€¢ VinFast VF8</p>
+                
+                <!-- Progress Bar -->
+                <div style="background: #F3F4F6; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 25px;">
+                    <div id="trackingProgressBar" style="width: 0%; height: 100%; background: linear-gradient(90deg, #10B981, #059669); transition: width 0.8s ease-in-out;"></div>
+                </div>
+
+                <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                    <button type="button" class="btn-primary" style="flex: 1; background: #10B981; border: none; border-radius: 12px; padding: 14px; font-size: 1rem; box-shadow: 0 4px 10px rgba(16,185,129,0.2);"><i class="fa-solid fa-phone"></i> Gá»i tĂ i xáº¿</button>
+                    <button type="button" class="btn-outline" style="flex: 1; border: 1px solid #D1D5DB; border-radius: 12px; padding: 14px; color: #374151; font-size: 1rem;"><i class="fa-solid fa-comment-dots"></i> Nháº¯n tin</button>
+                </div>
+                <button type="button" class="btn-outline" style="width: 100%; border: none; color: #EF4444; background: #FEE2E2; border-radius: 12px; padding: 14px; font-weight: 600; font-size: 1rem; transition: background 0.2s;" onmouseover="this.style.background='#FCA5A5'" onmouseout="this.style.background='#FEE2E2'" onclick="cancelTrip()">Há»§y chuyáº¿n</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==============================================
+         Má»¤C 6: RATING MODAL (ÄĂNH GIĂ TĂ€I Xáº¾)
+         ============================================== -->
+    <div id="ratingModal" class="modal-overlay">
+        <div class="modal-content" style="text-align: center; padding: 30px 20px;">
+            <h2 style="margin-bottom: 10px;">Chuyáº¿n Ä‘i hoĂ n táº¥t!</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">Cáº£m Æ¡n báº¡n Ä‘Ă£ lá»±a chá»n di chuyá»ƒn xanh.</p>
+            
+            <img src="https://i.pravatar.cc/150?img=11" alt="TĂ i xáº¿" style="width: 80px; height: 80px; border-radius: 50%; border: 3px solid #10B981; margin-bottom: 10px; object-fit: cover;">
+            <h3 style="margin-bottom: 5px;">Tráº§n VÄƒn A</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">VinFast VF8 â€¢ 51H-123.45</p>
+
+            <div id="ratingStars" style="font-size: 2.2rem; color: #E5E7EB; margin-bottom: 20px; cursor: pointer; display: flex; justify-content: center; gap: 5px;">
+                <i class="fa-solid fa-star star-item" data-val="1"></i>
+                <i class="fa-solid fa-star star-item" data-val="2"></i>
+                <i class="fa-solid fa-star star-item" data-val="3"></i>
+                <i class="fa-solid fa-star star-item" data-val="4"></i>
+                <i class="fa-solid fa-star star-item" data-val="5"></i>
+            </div>
+
+            <textarea id="ratingReview" rows="3" placeholder="HĂ£y chia sáº» tráº£i nghiá»‡m chuyáº¿n xe xanh cá»§a báº¡n..." style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); font-family: inherit; margin-bottom: 20px; resize: none;"></textarea>
+
+            <button type="button" class="btn-primary w-100" id="btnSubmitRating">Gá»­i Ä‘Ă¡nh giĂ¡ & HoĂ n táº¥t</button>
+        </div>
+    </div>
+
+    <!-- Script chung -->
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkoutForm = document.getElementById('checkoutForm');
+            const eTicketModal = document.getElementById('eTicketModal');
+            const voucherSelect = document.getElementById('bookingVoucherSelect');
+            const discountAmountEl = document.getElementById('bookingDiscountAmount');
+            const finalPriceEl = document.getElementById('bookingFinalPrice');
+            
+            const trackingModal = document.getElementById('trackingModal');
+            const pickupSelect = document.getElementById('bookingPickupSelect');
+            const dropoffSelect = document.getElementById('bookingDropoffSelect');
+            
+            // Load Booking Data from sessionStorage
+            const bookingData = JSON.parse(sessionStorage.getItem('ecoBookingData'));
+            let basePrice = 120000; // default
+            let currentDistance = 7.5;
+            let currentDiscount = 0;
+            let calculatedPrice = basePrice;
+            const platformFee = 5000;
+            let finalPrice = 0;
+            
+            function updatePriceUI() {
+                document.getElementById('bookingBasePrice').textContent = formatCurrency(calculatedPrice) + ' Ä‘';
+                finalPrice = Math.max(0, calculatedPrice + platformFee - currentDiscount);
+                finalPriceEl.textContent = formatCurrency(finalPrice) + ' Ä‘';
+            }
+            
+            function recalculateDynamicPrice(distanceVal) {
+                currentDistance = parseFloat(distanceVal);
+                document.getElementById('bookingDistanceUI').textContent = currentDistance + ' km';
+                
+                // Base calculation
+                calculatedPrice = basePrice;
+                if (currentDistance > 2) {
+                    calculatedPrice += (currentDistance - 2) * 12000;
+                }
+                updatePriceUI();
+            }
+            
+            if (bookingData) {
+                document.getElementById('bookingCarNameUI').textContent = bookingData.carName;
+                basePrice = bookingData.basePrice || 30000;
+                
+                // Check if coming from "Äáº·t xe ngay" destination
+                const destInputVal = document.getElementById('heroDestinationInput') ? document.getElementById('heroDestinationInput').value : '';
+                // Since this is another page, we check session data
+                // For simplicity, we just use the distance from session
+                recalculateDynamicPrice(bookingData.distance);
+            } else {
+                updatePriceUI();
+            }
+            
+            // Handle Dropdown Change for Distance Recalculation
+            function handleLocationChange() {
+                // Generate a random distance between 3 and 18 km
+                const newDistance = (Math.random() * (18 - 3) + 3).toFixed(1);
+                recalculateDynamicPrice(newDistance);
+                
+                // Show toast for better UX
+                if (window.showToast) {
+                    showToast('ÄĂ£ cáº­p nháº­t', 'Lá»™ trĂ¬nh vĂ  cÆ°á»›c phĂ­ Ä‘Ă£ Ä‘Æ°á»£c tĂ­nh toĂ¡n láº¡i.', 'info');
+                }
+            }
+            
+            if(pickupSelect) pickupSelect.addEventListener('change', handleLocationChange);
+            if(dropoffSelect) dropoffSelect.addEventListener('change', handleLocationChange);
+            
+            // Render Vouchers
+            let savedPromos = JSON.parse(localStorage.getItem('ecoSavedPromos')) || [];
+            
+            // Fallback vouchers náº¿u localStorage chÆ°a cĂ³ gĂ¬
+            if (savedPromos.length === 0) {
+                savedPromos = [
+                    { id: 'ECO50', code: 'ECO50', name: 'Giáº£m 50% chuyáº¿n xe Ä‘iá»‡n Ä‘áº§u tiĂªn', desc: 'Giáº£m 50% chuyáº¿n xe Ä‘iá»‡n', discount: 60000 },
+                    { id: 'FREESHIP', code: 'FREESHIP', name: 'Freeship tá»‘i Ä‘a 30K', desc: 'Freeship tá»‘i Ä‘a 30K', discount: 30000 },
+                    { id: 'ECO25K', code: 'ECO25K', name: 'Giáº£m 25K giá» cao Ä‘iá»ƒm', desc: 'Giáº£m 25K giá» cao Ä‘iá»ƒm', discount: 25000 }
+                ];
+            }
+            
+            voucherSelect.innerHTML = '<option value="0">-- KhĂ´ng dĂ¹ng Æ°u Ä‘Ă£i --</option>';
+            savedPromos.forEach(promo => {
+                const code = promo.code || promo.id || 'UU-DAI';
+                const label = promo.desc || promo.name || 'Giáº£m giĂ¡ chuyáº¿n Ä‘i';
+                const discountVal = parseInt(promo.discount) || 0;
+                
+                const opt = document.createElement('option');
+                opt.value = code;
+                opt.textContent = `${code} â€” ${label}`;
+                opt.setAttribute('data-discount', discountVal);
+                voucherSelect.appendChild(opt);
+            });
+
+            voucherSelect.addEventListener('change', () => {
+                const selectedOption = voucherSelect.options[voucherSelect.selectedIndex];
+                currentDiscount = parseInt(selectedOption.getAttribute('data-discount') || 0) || 0;
+                
+                if (currentDiscount > 0) {
+                    discountAmountEl.textContent = '-' + formatCurrency(currentDiscount) + ' Ä‘';
+                } else {
+                    discountAmountEl.textContent = '0 Ä‘';
+                }
+                
+                updatePriceUI();
+            });
+
+            // Utils
+            function formatCurrency(number) {
+                return new Intl.NumberFormat('vi-VN').format(number);
+            }
+
+            // Checkout Logic
+            checkoutForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+                
+                if (selectedPayment === 'ecopay') {
+                    let balance = parseInt(localStorage.getItem('ecoWalletBalance'));
+                    if (isNaN(balance)) {
+                        balance = 1500000;
+                        localStorage.setItem('ecoWalletBalance', balance);
+                    }
+                    
+                    if (balance < finalPrice) {
+                        if (window.showToast) {
+                            showToast('Thanh toĂ¡n tháº¥t báº¡i', 'Sá»‘ dÆ° VĂ­ EcoPay khĂ´ng Ä‘á»§!', 'error');
+                        } else {
+                            alert('Sá»‘ dÆ° vĂ­ khĂ´ng Ä‘á»§!');
+                        }
+                        return;
+                    }
+                    
+                    // Deduct
+                    balance -= finalPrice;
+                    localStorage.setItem('ecoWalletBalance', balance);
+                    if (window.addEcoTransaction) {
+                        window.addEcoTransaction(finalPrice, 'payment', 'Thanh toĂ¡n chuyáº¿n Ä‘i xe Ä‘iá»‡n');
+                    }
+                }
+                
+                if (window.showToast) {
+                    showToast('ThĂ nh cĂ´ng', 'Thanh toĂ¡n chuyáº¿n Ä‘i hoĂ n táº¥t!', 'success');
+                }
+
+                // LÆ°u lá»‹ch sá»­ chuyáº¿n Ä‘i vĂ o localStorage
+                const pickupVal = pickupSelect ? pickupSelect.options[pickupSelect.selectedIndex].text : '123 Nguyá»…n Huá»‡, Quáº­n 1';
+                const dropoffVal = dropoffSelect ? dropoffSelect.options[dropoffSelect.selectedIndex].text : 'SĂ¢n bay TĂ¢n SÆ¡n Nháº¥t';
+                const carName = (bookingData && bookingData.carName) ? bookingData.carName : 'VinFast VF 8';
+
+                const newTrip = {
+                    id: '#ECO' + Math.floor(10000 + Math.random() * 90000),
+                    pickup: pickupVal,
+                    dropoff: dropoffVal,
+                    carType: carName,
+                    distance: currentDistance,
+                    price: finalPrice,
+                    status: 'ÄĂ£ hoĂ n thĂ nh',
+                    time: 'HĂ´m nay, ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                };
+
+                let userTrips = JSON.parse(localStorage.getItem('ecoUserTrips')) || [];
+                userTrips.unshift(newTrip);
+                localStorage.setItem('ecoUserTrips', JSON.stringify(userTrips));
+
+                eTicketModal.classList.add('show');
+            });
+
+            // Tracking Logic
+            window.startTracking = function() {
+                eTicketModal.classList.remove('show');
+                trackingModal.classList.add('show');
+                
+                // Populate dynamic car info if needed
+                if (bookingData && bookingData.carName) {
+                    document.getElementById('trackingDriverInfo').innerHTML = `Biá»ƒn sá»‘: <strong>51H-${Math.floor(100+Math.random()*900)}.${Math.floor(10+Math.random()*90)}</strong> â€¢ ${bookingData.carName}`;
+                }
+                
+                // Simulate Tracking
+                trackingProgressBar.style.width = '0%';
+                trackingStatusText.textContent = "TĂ i xáº¿ Ä‘ang Ä‘áº¿n Ä‘iá»ƒm Ä‘Ă³n...";
+                
+                setTimeout(() => {
+                    trackingProgressBar.style.width = '50%';
+                }, 100);
+                
+                setTimeout(() => {
+                    trackingStatusText.textContent = "Äang di chuyá»ƒn Ä‘áº¿n Ä‘iá»ƒm Ä‘áº¿n...";
+                    trackingProgressBar.style.width = '100%';
+                }, 4000);
+                
+                setTimeout(() => {
+                    if (trackingModal.classList.contains('show')) { // Ensure not cancelled
+                        trackingModal.classList.remove('show');
+                        ratingModal.classList.add('show');
+                    }
+                }, 8000);
+            };
+
+            window.cancelTrip = function() {
+                if(confirm('Báº¡n cĂ³ cháº¯c cháº¯n muá»‘n há»§y chuyáº¿n xe nĂ y khĂ´ng? Lá»‹ch sá»­ chuyáº¿n Ä‘i sáº½ bá»‹ áº£nh hÆ°á»Ÿng.')) {
+                    trackingModal.classList.remove('show');
+                    if (window.showToast) {
+                        showToast('ÄĂ£ há»§y', 'Chuyáº¿n Ä‘i Ä‘Ă£ bá»‹ há»§y thĂ nh cĂ´ng.', 'error');
+                    }
+                }
+            };
+
+            window.closeTracking = function() {
+                trackingModal.classList.remove('show');
+            };
+
+            // Rating Logic
+            const starsRating = document.querySelectorAll('#ratingStars .star-item'); 
+            let selectedRating = 5; // Máº·c Ä‘á»‹nh 5 sao
+
+            starsRating.forEach((star, index) => {
+                // Hiá»‡u á»©ng khi rĂª chuá»™t (hover)
+                star.addEventListener('mouseenter', () => {
+                    starsRating.forEach((s, i) => {
+                        s.style.color = i <= index ? '#F59E0B' : '#D1D5DB';
+                    });
+                });
+                
+                // KhĂ´i phá»¥c khi bá» chuá»™t
+                star.addEventListener('mouseleave', () => {
+                    starsRating.forEach((s, i) => {
+                        s.style.color = i < selectedRating ? '#F59E0B' : '#D1D5DB';
+                    });
+                });
+                
+                // Khi click chá»n sá»‘ sao
+                star.addEventListener('click', () => {
+                    selectedRating = index + 1;
+                    starsRating.forEach((s, i) => {
+                        s.style.color = i < selectedRating ? '#F59E0B' : '#D1D5DB';
+                    });
+                });
+            });
+
+            // Xá»­ lĂ½ nĂºt "Gá»­i Ä‘Ă¡nh giĂ¡ & HoĂ n táº¥t"
+            const submitReviewBtn = document.getElementById('btnSubmitRating');
+            if (submitReviewBtn) {
+                submitReviewBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // Láº¥y ná»™i dung ghi chĂº tá»« textarea
+                    const reviewComment = document.getElementById('ratingReview').value || '';
+
+                    // LÆ°u thĂ´ng tin Ä‘Ă¡nh giĂ¡ vĂ o localStorage (náº¿u cáº§n)
+                    const tripReview = {
+                        rating: selectedRating,
+                        comment: reviewComment,
+                        time: new Date().toISOString()
+                    };
+                    localStorage.setItem('latestTripReview', JSON.stringify(tripReview));
+
+                    // Hiá»ƒn thá»‹ thĂ´ng bĂ¡o thĂ nh cĂ´ng
+                    if (typeof showToast === 'function') {
+                        showToast('ThĂ nh cĂ´ng', 'Cáº£m Æ¡n báº¡n Ä‘Ă£ Ä‘Ă¡nh giĂ¡ chuyáº¿n Ä‘i!', 'success');
+                    } else {
+                        alert('Cáº£m Æ¡n báº¡n Ä‘Ă£ Ä‘Ă¡nh giĂ¡ chuyáº¿n Ä‘i!');
+                    }
+
+                    ratingModal.classList.remove('show');
+
+                    // ÄĂ³ng modal vĂ  chuyá»ƒn hÆ°á»›ng vá» trang chá»§ hoáº·c lá»‹ch sá»­ chuyáº¿n Ä‘i
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                });
+            }
+        });
+    </script>
+    <!-- ==============================================
+         BOTTOM NAVIGATION BAR
+         ============================================== -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Trang chủ</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+            <i class="fa-solid fa-car-side"></i>
+            <span>Hoạt động</span>
+        </a>
+        <a href="support.html" class="nav-item">
+            <i class="fa-solid fa-message"></i>
+            <span>Tin nhắn</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fa-solid fa-user"></i>
+            <span>Tài khoản</span>
+        </a>
+    </nav>
+    </div>
+</body>
+</html>
+

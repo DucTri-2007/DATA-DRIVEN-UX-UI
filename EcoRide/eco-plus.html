@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EcoRide - ÄÄƒng kĂ½ Eco+</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .plan-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 24px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .plan-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -5px rgba(0,0,0,0.15);
+            border-color: var(--primary-color);
+        }
+        .plan-card.popular {
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+        .plan-card.popular:hover {
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.3);
+        }
+        .plan-card.featured {
+            background: #FAFAFA;
+            color: var(--text-main);
+            border: 2px solid #10B981;
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
+            z-index: 10;
+        }
+        .plan-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+            box-shadow: 0 25px 50px rgba(16, 185, 129, 0.25);
+        }
+        .plan-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+        .plan-features {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 30px;
+            list-style: none;
+            padding: 0;
+            color: #4B5563;
+            line-height: 1.6;
+        }
+        .plan-features li {
+            display: flex;
+            align-items: flex-start;
+        }
+        .plan-features i {
+            color: var(--primary-color);
+            margin-right: 12px;
+            margin-top: 4px;
+        }
+        .buy-plan-btn {
+            border-radius: 50px !important;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            padding: 12px;
+        }
+        .buy-plan-btn:active {
+            transform: scale(0.95) translateY(2px);
+        }
+        @media (max-width: 1024px) {
+            .plans-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .plan-card.featured {
+                transform: scale(1);
+            }
+            .plan-card.featured:hover {
+                transform: translateY(-8px);
+            }
+        }
+        @media (max-width: 768px) {
+            .plans-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-leaf"></i> EcoRide</a>
+            <nav class="nav-menu">
+                <a href="index.html">Trang chá»§</a>
+                <a href="trips.html">Chuyáº¿n Ä‘i</a>
+                <a href="support.html">Trá»£ giĂºp</a>
+                <a href="promos.html">Æ¯u Ä‘Ă£i</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="eco-badge" title="Äiá»ƒm sinh thĂ¡i">đŸŒ± 12.5kg CO2 Ä‘Ă£ giáº£m</div>
+                <a href="eco-plus.html" id="btnEcoPlus" class="btn-outline eco-plus-cta" title="Trá»Ÿ thĂ nh há»™i viĂªn VIP Ä‘á»ƒ nháº­n Æ°u Ä‘Ă£i vĂ´ háº¡n">âœ¨ ÄÄƒng kĂ½ Eco+</a>
+                <div class="user-menu-wrapper" id="userMenuWrapper">
+                    <div class="user-avatar" id="userAvatar">
+                        <img src="https://i.pravatar.cc/150?img=68" alt="Avatar">
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; color: #6B7280; margin-left: 6px;"></i>
+                    </div>
+                    <div class="user-dropdown" id="dropdownMenu">
+                        <ul>
+                            <li><a href="profile.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-regular fa-user"></i> Há»“ sÆ¡ cĂ¡ nhĂ¢n</a></li>
+                            <li class="text-green"><a href="trips.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-car-side"></i> Lá»‹ch sá»­ chuyáº¿n Ä‘i</a></li>
+                            <li><a href="wallet.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-wallet"></i> VĂ­ EcoPay</a></li>
+                            <li><a href="settings.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-gear"></i> CĂ i Ä‘áº·t</a></li>
+                            <hr>
+                            <li id="menuLogout" class="logout-item"><i class="fa-solid fa-arrow-right-from-bracket"></i> ÄÄƒng xuáº¥t</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 60px 20px; max-width: 1200px; text-align: center;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 15px; color: var(--primary-color);">NĂ¢ng háº¡ng VIP vá»›i Eco+</h2>
+        <p style="font-size: 1.1rem; color: #6B7280; margin-bottom: 40px;">Táº­n hÆ°á»Ÿng Ä‘áº·c quyá»n khĂ´ng giá»›i háº¡n cho cĂ¡c tĂ­n Ä‘á»“ sá»‘ng xanh.</p>
+        
+        <div class="plans-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 40px; text-align: left; align-items: stretch;">
+            <!-- GĂ³i Tuáº§n -->
+            <div class="plan-card">
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">GĂ³i Tuáº§n</h3>
+                <div style="font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin-bottom: 20px;">29,000 Ä‘<span style="font-size: 0.9rem; color: #6B7280; font-weight: 400;">/tuáº§n</span></div>
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check"></i> Giáº£m 15% cho 3 chuyáº¿n Ä‘áº§u</li>
+                    <li><i class="fa-solid fa-check"></i> Miá»…n phĂ­ chá» xe 5 phĂºt</li>
+                    <li><i class="fa-solid fa-check"></i> TĂ­ch lÅ©y x1.2 EcoPoints</li>
+                </ul>
+                <button class="btn-outline w-100 buy-plan-btn" data-name="GĂ³i Tuáº§n" data-price="29000">Chá»n gĂ³i nĂ y</button>
+            </div>
+            
+            <!-- GĂ³i ThĂ¡ng -->
+            <div class="plan-card popular">
+                <div class="plan-badge" style="background: linear-gradient(90deg, #10B981, #059669); color: white; box-shadow: 0 4px 10px rgba(16,185,129,0.3);">PHá»” BIáº¾N NHáº¤T</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">GĂ³i ThĂ¡ng</h3>
+                <div style="font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin-bottom: 20px;">99,000 Ä‘<span style="font-size: 0.9rem; color: #6B7280; font-weight: 400;">/thĂ¡ng</span></div>
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check"></i> Freeship 5 chuyáº¿n (tá»‘i Ä‘a 30k)</li>
+                    <li><i class="fa-solid fa-check"></i> Giáº£m 20% cĂ¡c chuyáº¿n tiáº¿p theo</li>
+                    <li><i class="fa-solid fa-check"></i> Æ¯u tiĂªn tĂ¬m xe giá» cao Ä‘iá»ƒm</li>
+                    <li><i class="fa-solid fa-check"></i> Há»— trá»£ khĂ¡ch hĂ ng VIP 24/7</li>
+                </ul>
+                <button class="btn-primary w-100 buy-plan-btn" data-name="GĂ³i ThĂ¡ng" data-price="99000">Chá»n gĂ³i nĂ y</button>
+            </div>
+
+            <!-- GĂ³i QuĂ½ -->
+            <div class="plan-card">
+                <div class="plan-badge" style="background: #FCE7F3; color: #BE185D;">TIáº¾T KIá»†M</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">GĂ³i QuĂ½</h3>
+                <div style="font-size: 1.8rem; font-weight: 700; color: var(--text-main); margin-bottom: 20px;">269,000 Ä‘<span style="font-size: 0.9rem; color: #6B7280; font-weight: 400;">/3 thĂ¡ng</span></div>
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check"></i> Freeship 20 chuyáº¿n toĂ n diá»‡n</li>
+                    <li><i class="fa-solid fa-check"></i> Giáº£m 30% cÆ°á»›c ngĂ y cuá»‘i tuáº§n</li>
+                    <li><i class="fa-solid fa-check"></i> Táº·ng 50 EcoPoints</li>
+                    <li><i class="fa-solid fa-check"></i> Äáº·c quyá»n Ä‘á»•i xe Ä‘á»i má»›i</li>
+                </ul>
+                <button class="btn-outline w-100 buy-plan-btn" data-name="GĂ³i QuĂ½" data-price="269000">Chá»n gĂ³i nĂ y</button>
+            </div>
+            
+            <!-- GĂ³i NÄƒm -->
+            <div class="plan-card featured">
+                <div class="plan-badge" style="background: linear-gradient(90deg, #FCD34D, #F59E0B); color: #78350F; box-shadow: 0 4px 10px rgba(245,158,11,0.3);">SIĂU Äáº¶C QUYá»€N</div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">GĂ³i NÄƒm</h3>
+                <div style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px;">990,000 Ä‘<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8;">/nÄƒm</span></div>
+                <ul class="plan-features">
+                    <li><i class="fa-solid fa-check"></i> Freeship KHĂ”NG GIá»I Háº N</li>
+                    <li><i class="fa-solid fa-check"></i> Giáº£m 40% toĂ n bá»™ cÆ°á»›c phĂ­</li>
+                    <li><i class="fa-solid fa-check"></i> HoĂ n tiá»n 5% vĂ o vĂ­ má»—i thĂ¡ng</li>
+                    <li><i class="fa-solid fa-check"></i> Miá»…n phĂ­ há»§y chuyáº¿n khĂ´ng lĂ½ do</li>
+                </ul>
+                <button class="btn-primary w-100 buy-plan-btn" data-name="GĂ³i NÄƒm" data-price="990000">XĂ¡c nháº­n thanh toĂ¡n gĂ³i</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+    <!-- ==============================================
+         BOTTOM NAVIGATION BAR
+         ============================================== -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Trang chủ</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+            <i class="fa-solid fa-car-side"></i>
+            <span>Hoạt động</span>
+        </a>
+        <a href="support.html" class="nav-item">
+            <i class="fa-solid fa-message"></i>
+            <span>Tin nhắn</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fa-solid fa-user"></i>
+            <span>Tài khoản</span>
+        </a>
+    </nav>
+    </div>
+</body>
+</html>
+

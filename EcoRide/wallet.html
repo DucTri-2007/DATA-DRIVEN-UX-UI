@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>EcoRide - VĂ­ EcoPay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <!-- TOP NAVBAR Äá»’NG Bá»˜ -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-leaf"></i> EcoRide
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Trang chá»§</a>
+                <a href="trips.html">Chuyáº¿n Ä‘i</a>
+                <a href="support.html">Trá»£ giĂºp</a>
+                <a href="promos.html">Æ¯u Ä‘Ă£i</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="eco-badge" title="Äiá»ƒm sinh thĂ¡i">đŸŒ± 12.5kg CO2 Ä‘Ă£ giáº£m</div>
+                <a href="eco-plus.html" id="btnEcoPlus" class="btn-outline eco-plus-cta" title="Trá»Ÿ thĂ nh há»™i viĂªn VIP Ä‘á»ƒ nháº­n Æ°u Ä‘Ă£i vĂ´ háº¡n">âœ¨ ÄÄƒng kĂ½ Eco+</a>
+                <div class="user-menu-wrapper" id="userMenuWrapper">
+                    <div class="user-avatar" id="userAvatar">
+                        <img src="https://i.pravatar.cc/150?img=68" alt="Avatar ngÆ°á»i dĂ¹ng">
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; color: #6B7280; margin-left: 6px;"></i>
+                    </div>
+                    <div class="user-dropdown" id="dropdownMenu">
+                        <ul>
+                            <li><a href="profile.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-regular fa-user"></i> Há»“ sÆ¡ cĂ¡ nhĂ¢n</a></li>
+                            <li class="text-green"><a href="trips.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-car-side"></i> Lá»‹ch sá»­ chuyáº¿n Ä‘i</a></li>
+                            <li><a href="wallet.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-wallet"></i> VĂ­ EcoPay</a></li>
+                            <li><a href="settings.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; width: 100%;"><i class="fa-solid fa-gear"></i> CĂ i Ä‘áº·t</a></li>
+                            <hr>
+                            <li id="menuLogout" class="logout-item"><i class="fa-solid fa-arrow-right-from-bracket"></i> ÄÄƒng xuáº¥t</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 40px 20px; max-width: 900px; min-height: calc(100vh - 100px);">
+        <h2 class="section-title">VĂ­ EcoPay</h2>
+        
+        <style>
+            .transaction-row {
+                transition: background-color 0.2s ease;
+                border-bottom: 1px solid #E5E7EB;
+            }
+            .transaction-row:hover {
+                background-color: #F9FAFB;
+            }
+        </style>
+        <div style="display: flex; flex-direction: column; gap: 40px; align-items: center;">
+            <!-- Tháº» sá»‘ dÆ° -->
+            <div style="background: linear-gradient(135deg, #10B981 0%, #059669 100%); color: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25); display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; max-width: 600px;">
+                <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 15px;">Sá»‘ dÆ° hiá»‡n táº¡i</p>
+                <h3 id="currentBalance" style="font-size: 3.2rem; font-weight: 700; margin-bottom: 35px; white-space: nowrap;">1.500.000 Ä‘</h3>
+                <button id="btnOpenDeposit" style="width: 100%; background: white; color: var(--primary-color); font-size: 1.15rem; padding: 15px; border: none; border-radius: 50px; font-weight: 600; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: all 0.3s ease;" onmouseover="this.style.boxShadow='0 8px 20px rgba(255,255,255,0.4)'; this.style.transform='translateY(-2px)';" onmouseout="this.style.boxShadow='0 4px 10px rgba(0,0,0,0.1)'; this.style.transform='translateY(0)';">
+                    <i class="fa-solid fa-plus-circle"></i> Náº¡p tiá»n
+                </button>
+            </div>
+
+            <!-- Lá»‹ch sá»­ giao dá»‹ch -->
+            <div style="background: white; border-radius: 20px; padding: 30px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); width: 100%;">
+                <h3 style="margin-bottom: 25px; font-size: 1.4rem;">Giao dá»‹ch gáº§n Ä‘Ă¢y</h3>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 500px;">
+                        <thead style="background: #F9FAFB; border-bottom: 2px solid #E5E7EB;">
+                            <tr>
+                                <th style="padding: 16px 20px; font-weight: 600; color: #4B5563; border-top-left-radius: 12px;">MĂ£ GD</th>
+                                <th style="padding: 16px 20px; font-weight: 600; color: #4B5563;">Thá»i gian</th>
+                                <th style="padding: 16px 20px; font-weight: 600; color: #4B5563;">Sá»‘ tiá»n</th>
+                                <th style="padding: 16px 20px; font-weight: 600; color: #4B5563; border-top-right-radius: 12px;">Tráº¡ng thĂ¡i</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionTableBody">
+                            <!-- JS Render Here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL Náº P TIá»€N -->
+    <div id="depositModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(2px);">
+        <div style="background: white; border-radius: 16px; padding: 25px; width: 90%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
+            <h3 style="margin-bottom: 20px; font-size: 1.3rem; color: #111827; border-bottom: 1px solid #E5E7EB; padding-bottom: 15px; text-align: center;">Náº¡p tiá»n vĂ o vĂ­ EcoPay</h3>
+            
+            <div style="margin-bottom: 15px;">
+                <p style="font-size: 0.95rem; color: #4B5563; margin-bottom: 10px; font-weight: 500;">Chá»n nhanh sá»‘ tiá»n</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <button type="button" class="btn-deposit-pill" data-amount="100000" style="padding: 10px; background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; cursor: pointer; font-weight: 500; color: #374151;">+100.000 Ä‘</button>
+                    <button type="button" class="btn-deposit-pill" data-amount="200000" style="padding: 10px; background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; cursor: pointer; font-weight: 500; color: #374151;">+200.000 Ä‘</button>
+                    <button type="button" class="btn-deposit-pill" data-amount="500000" style="padding: 10px; background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; cursor: pointer; font-weight: 500; color: #374151;">+500.000 Ä‘</button>
+                    <button type="button" class="btn-deposit-pill" data-amount="1000000" style="padding: 10px; background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; cursor: pointer; font-weight: 500; color: #374151;">+1.000.000 Ä‘</button>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <p style="font-size: 0.95rem; color: #4B5563; margin-bottom: 10px; font-weight: 500;">Hoáº·c nháº­p sá»‘ tiá»n tĂ¹y chá»‰nh</p>
+                <input type="number" id="depositAmount" placeholder="Nháº­p sá»‘ tiá»n cáº§n náº¡p..." style="width: 100%; padding: 12px 15px; border: 1px solid #D1D5DB; border-radius: 8px; font-size: 1rem; outline: none; box-sizing: border-box;">
+            </div>
+
+            <div style="display: flex; gap: 15px;">
+                <button type="button" id="btnCancelDeposit" style="flex: 1; padding: 12px; background: #F3F4F6; border: none; border-radius: 8px; font-weight: 600; color: #4B5563; cursor: pointer;">Há»§y bá»</button>
+                <button type="button" id="btnConfirmDeposit" class="btn-primary" style="flex: 1; padding: 12px; border-radius: 8px; font-weight: 600;">XĂ¡c nháº­n náº¡p tiá»n</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script chung -->
+    <script src="script.js"></script>
+    <!-- ==============================================
+         BOTTOM NAVIGATION BAR
+         ============================================== -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Trang chủ</span>
+        </a>
+        <a href="trips.html" class="nav-item">
+            <i class="fa-solid fa-car-side"></i>
+            <span>Hoạt động</span>
+        </a>
+        <a href="support.html" class="nav-item">
+            <i class="fa-solid fa-message"></i>
+            <span>Tin nhắn</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fa-solid fa-user"></i>
+            <span>Tài khoản</span>
+        </a>
+    </nav>
+    </div>
+</body>
+</html>
+
